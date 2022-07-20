@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "Tinkoff Sans";
+  src: url("../public/fonts/TinkoffSans.woff");
+}

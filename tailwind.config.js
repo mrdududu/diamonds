@@ -8,7 +8,11 @@ module.exports = {
     "./nuxt.config.{js,ts}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        tinkoff: ["Tinkoff Sans", "sans-serif"],
+      }
+    },
   },
   plugins: [],
 }
