@@ -1,3 +1,3 @@
 <template lang="pug">
-div Some default layout shared across all pages
+div.text-tf-white Some default layout shared across all pages
 </template>

@@ -11,7 +11,8 @@ module.exports = {
     extend: {
       fontFamily: {
         tinkoff: ["Tinkoff Sans", "sans-serif"],
-      }
+      },
+      colors: {'tf-black': '#202020', 'tf-white': '#F0F0F0'}
     },
   },
   plugins: [],
