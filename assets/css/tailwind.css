@@ -6,3 +6,9 @@
   font-family: "Tinkoff Sans";
   src: url("../public/fonts/TinkoffSans.woff");
 }
+
+@layer base {
+  body{
+    @apply bg-tf-black;
+  }
+}
