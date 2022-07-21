@@ -19,7 +19,8 @@ div(class="container mx-auto grid grid-cols-1 lg:grid-cols-12 lg:gap-x-16" style
   tfButton(class="lg:col-span-2") Лучшее
   tfButton(class="lg:col-span-2") Каталог
   tfButton(class="lg:col-span-2") О компании
-  div(class="lg:col-start-1 lg:col-span-12 mt-10") test
+  div(class="lg:col-start-1 lg:col-span-12 my-32 flex justify-center")
+    img(src="/img/arrow_down.svg")
   slot
 </template>
 <script>
