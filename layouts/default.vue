@@ -1,6 +1,6 @@
 <template lang="pug">
 div(class="container mx-auto grid grid-cols-1 lg:grid-cols-12 lg:gap-x-16" style="background-color:rgba(255,255,255, 0.05);")
-  div(class="lg:col-start-3 lg:col-span-6 mt-36 mb-10")
+  div(class="lg:col-start-3 lg:col-span-6 mt-36 mb-10" style="background-color:rgba(255,255,255, 0.05);")
     div(class="mb-16")
       img(src="/img/tf_logo.svg")
     div(class="mb-10")
