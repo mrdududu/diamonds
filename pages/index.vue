@@ -5,13 +5,13 @@ div(class="px-14")
     tfTabBtn Чистота
     tfTabBtn Огранка
     tfTabBtn Карат
-  GuideLayout
+  GuideColors
 </template>
 <script>
 import tfTabBtn from '~/components/uikit/tfTabBtn.vue';
-import GuideLayout from '~/components/diamonds_guide/GuideLayout.vue';
+import GuideColors from '~/components/diamonds_guide/GuideColors.vue';
 export default {
-  components: {tfTabBtn, GuideLayout},
+  components: {tfTabBtn, GuideColors},
   setup() {
     
   },
