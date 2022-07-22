@@ -12,7 +12,13 @@ module.exports = {
       fontFamily: {
         tinkoff: ["Tinkoff Sans", "sans-serif"],
       },
-      colors: {'tf-black': '#202020', 'tf-white': '#F0F0F0', 'tf-yellow': '#FFDD2D'}
+      colors: {
+        'tf-black': '#202020', 
+        'tf-white': '#F0F0F0', 
+        'tf-yellow': '#FFDD2D', 
+        'tf-yellow-hover': '#FFE457', 
+        'tf-yellow-push': '#EFCF2C'
+      }
     },
   },
   plugins: [],
