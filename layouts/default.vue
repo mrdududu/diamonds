@@ -23,15 +23,6 @@ div(class="container mx-auto grid grid-cols-1 lg:grid-cols-12 lg:gap-x-16" style
       tfButton(href="#about") О компании
   div(class="lg:col-start-1 lg:col-span-12 my-32 flex justify-center")
     img(src="/img/arrow_down.svg")
-  div(class="lg:col-start-1 lg:col-span-12 px-14")
-    div(class="flex")
-      tfTabBtn Цвет
-      tfTabBtn Чистота
-      tfTabBtn Огранка
-      tfTabBtn Карат
-    div(class="py-10")
-      h2 Цвет
-      p(class="mt-8 text-xl") Главный фактор, влияющий на оценку #[br] ювелирного цветного камня.
   div(class="lg:col-start-1 lg:col-span-12")
     slot
   div(class="lg:col-start-1 lg:col-span-12")
@@ -55,9 +46,8 @@ div(class="container mx-auto grid grid-cols-1 lg:grid-cols-12 lg:gap-x-16" style
 </template>
 <script>
 import tfButton from '~/components/uikit/tfButton.vue';
-import tfTabBtn from '~/components/uikit/tfTabBtn.vue';
 export default {
-  components: {tfButton, tfTabBtn},
+  components: {tfButton},
   setup() {
     
   },
