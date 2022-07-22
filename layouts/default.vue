@@ -17,10 +17,10 @@ div(class="container mx-auto grid grid-cols-1 lg:grid-cols-12 lg:gap-x-16" style
         li Мобильность
   div(class="lg:col-start-3 lg:col-span-8")
     div(class="grid grid-cols-1 lg:grid-cols-4 lg:gap-x-16")
-      tfButton Главная
-      tfButton Лучшее
-      tfButton Каталог
-      tfButton О компании
+      tfButton(href="/") Главная
+      tfButton(href="#best") Лучшее
+      tfButton(href="/catalog") Каталог
+      tfButton(href="#about") О компании
   div(class="lg:col-start-1 lg:col-span-12 my-32 flex justify-center")
     img(src="/img/arrow_down.svg")
   div(class="lg:col-start-1 lg:col-span-12 px-14")
