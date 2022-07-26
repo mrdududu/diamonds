@@ -5,7 +5,7 @@ div(class="px-14")
     tfTabBtn Чистота
     tfTabBtn Огранка
     tfTabBtn Карат
-  //- GuideColors
+  GuideColors
   GuideClarity
 </template>
 <script>
