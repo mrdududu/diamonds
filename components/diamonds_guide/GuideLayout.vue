@@ -4,5 +4,6 @@ div(class="py-10")
     slot(name="title")
   p(class="mt-8 text-xl")
     slot(name="text")
-  slot
+  div(class="my-14")
+    slot
 </template>

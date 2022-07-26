@@ -12,6 +12,9 @@ module.exports = {
       fontFamily: {
         tinkoff: ["Tinkoff Sans", "sans-serif"],
       },
+      fontSize: {
+        'xs': '.75rem',
+      },
       colors: {
         'tf-black': '#202020', 
         'tf-white': '#F0F0F0', 
