@@ -5,13 +5,15 @@ div(class="px-14")
     tfTabBtn Чистота
     tfTabBtn Огранка
     tfTabBtn Карат
-  GuideColors
+  //- GuideColors
+  GuideClarity
 </template>
 <script>
 import tfTabBtn from '~/components/uikit/tfTabBtn.vue';
 import GuideColors from '~/components/diamonds_guide/GuideColors.vue';
+import GuideClarity from '~/components/diamonds_guide/GuideClarity.vue';
 export default {
-  components: {tfTabBtn, GuideColors},
+  components: {tfTabBtn, GuideColors, GuideClarity},
   setup() {
     
   },
