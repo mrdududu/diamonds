@@ -8,8 +8,8 @@ GuideLayout
       div(class="mb-8 text-xl text-center text-tf-yellow") {{shape.name}}
       div(class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8")
         div(v-for="size in sizes" class="text-xs text-center")
-          div(class="h-20 flex justify-center items-end")
-            img(:src="`/img/diamonds/shape/shape_${shape.key}.svg`" style="width: 46px")
+          div(class="h-20 flex justify-center items-end mb-2")
+            img(:src="`/img/diamonds/shape/shape_${shape.key}.svg`" :style="{width: formatWidth(size)}")
           div {{size.ct}} карат
           div {{formatSizeString(size)}}
 </template>
@@ -32,6 +32,14 @@ export default {
         }
 
         return '';
+      },
+      formatWidth(size){
+        const cf = 5.45;
+        const wmm = size.mm ? size.mm : size.wmm;
+
+        const wpx = Math.round(wmm * cf);
+
+        return `${wpx}px`
       }
     };
   },
