@@ -1,14 +1,6 @@
 <template lang="pug">
 div(class="px-14")
   tfTabMenu(:tabs="state.tabs" @tabClick="tabClick")
-  //- div(class="flex")
-  //-   tfTabBtn Цвет
-  //-   tfTabBtn Чистота
-  //-   tfTabBtn Огранка
-  //-   tfTabBtn Карат
-  //- GuideColors
-  //- GuideClarity
-  //- GuideShape
   GuideSize
 </template>
 <script>
@@ -41,7 +33,6 @@ export default {
     return {
       state,
       tabClick(tab) {
-        // console.log('tabclick', { tab });
         state.tabs = tabs.map((item) => ({
           ...item,
           selected: item.key === tab.key,
