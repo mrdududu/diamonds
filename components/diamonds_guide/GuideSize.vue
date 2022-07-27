@@ -6,7 +6,7 @@ GuideLayout
     div(v-for="{shape, sizes} in sizesData" :key="shape.key" class="mb-16")
       div(class="mb-2 text-xs text-center") огранка
       div(class="mb-8 text-xl text-center text-tf-yellow") {{shape.name}}
-      div(class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8")
+      div(class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8")
         div(v-for="size in sizes" class="text-xs text-center")
           div(class="h-20 flex justify-center items-end mb-2")
             img(:src="`/img/diamonds/shape/shape_${shape.key}.svg`" :style="{width: formatWidth(size)}")
