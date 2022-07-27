@@ -9,11 +9,9 @@ div(class="grid grid-cols-1 lg:grid-cols-2 gap-y-16")
       div(class="w-2/4 h-3 border-x border-b border-tf-white")
       div(v-html="groupData.title" class="text-center")
 </template>
-<script>
-export default {
-  props:["imgKey", "gridData"],
-  setup() {
-    
-  },
-}
+<script setup>
+const props = defineProps({
+  imgKey: String,
+  gridData: Object,
+});
 </script>

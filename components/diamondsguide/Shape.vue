@@ -1,5 +1,5 @@
 <template lang="pug">
-GuideLayout
+DiamondsguideLayout
   template(#title) Огранка
   template(#text) Учитываются форма, тип огранки, пропорции, #[br] качество обработки (симметрия, полировка и т. д.).
   template(#default)
@@ -10,15 +10,7 @@ GuideLayout
         div(class="text-xl mb-4") {{item.name}}
         div(class="text-sm") {{item.desc}}
 </template>
-<script>
-import GuideLayout from '~/components/diamonds_guide/GuideLayout.vue';
-import gridData from '~/components/diamonds_guide/data/shape.json';
-export default {
-  components: {GuideLayout},
-  setup() {
-    // console.log({gridData});
-
-    return {imgKey: 'shape', gridData};
-  },
-}
+<script setup>
+import gridData from '~/components/DiamondsGuide/data/shape.json';
+const imgKey = 'shape';
 </script>

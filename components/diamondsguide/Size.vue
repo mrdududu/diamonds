@@ -1,5 +1,5 @@
 <template lang="pug">
-GuideLayout
+DiamondsguideLayout
   template(#title) Карат
   template(#text) Масса камня в каратах #[br] (1 карат равен 0,2 грамма).
   template(#default)
@@ -13,35 +13,26 @@ GuideLayout
           div {{size.ct}} карат
           div {{formatSizeString(size)}}
 </template>
-<script>
-import GuideLayout from '~/components/diamonds_guide/GuideLayout.vue';
-import sizesData from '~/components/diamonds_guide/data/size.json';
-export default {
-  components: {GuideLayout},
-  setup() {
-    // console.log({sizesData});
 
-    return {
-      sizesData,
-      formatSizeString(size){
-        if (size.mm){
-          return `${size.mm} мм`
-        }
-        else if (size.hmm && size.wmm) {
-          return `${size.hmm}х${size.wmm} мм`
-        }
+<script setup>
+import sizesData from '~/components/DiamondsGuide/data/size.json';
 
-        return '';
-      },
-      formatWidth(size){
-        const cf = 5.45;
-        const wmm = size.mm ? size.mm : size.wmm;
+const formatSizeString = (size) => {
+  if (size.mm) {
+    return `${size.mm} мм`;
+  } else if (size.hmm && size.wmm) {
+    return `${size.hmm}х${size.wmm} мм`;
+  }
 
-        const wpx = Math.round(wmm * cf);
+  return '';
+};
 
-        return `${wpx}px`
-      }
-    };
-  },
-}
+const formatWidth = (size) => {
+  const cf = 5.45;
+  const wmm = size.mm ? size.mm : size.wmm;
+
+  const wpx = Math.round(wmm * cf);
+
+  return `${wpx}px`;
+};
 </script>
