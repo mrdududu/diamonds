@@ -1,9 +1,9 @@
 <template lang="pug">
 div(class="bg-tf-gray-dark rounded-xl")
   div(class="bg-tf-white rounded-xl square") wec
-  div(class="p-3 text-xs")
+  div(class="p-3 text-sm")
     div Бриллиант
-    div.text-sm.py-2 огранка Круглая
+    div.text-base.py-2 огранка Круглая
     div Вес: 0.92 карата
     div Граней: 57
     div Цвет: 4
