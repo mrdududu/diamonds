@@ -13,8 +13,6 @@ import { reactive } from 'vue';
 const route = useRoute();
 const router = useRouter();
 
-console.log('Route page', { pageIndex: Number(route.params.page) });
-
 const pIndex = computed(() => {
   let page = Number(route.params.page);
   page = page ? page : 1;
@@ -27,7 +25,6 @@ const state = reactive({
 
 const items = Array.from(Array(12), (_, x) => x);
 const pageClick = (pageIndex) => {
-  console.log('pageClick', pageIndex);
   const url = pageIndex ? `/catalog/${pageIndex + 1}` : '/catalog';
   router.push(url);
 };
