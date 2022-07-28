@@ -10,6 +10,10 @@ div(class="")
 <script setup>
 import { reactive } from 'vue';
 
+const route = useRoute();
+
+console.log('Route index', { pageIndex: Number(route.params.pageIndex) });
+
 const state = reactive({
   totalPages: 12,
   pageIndex: 0,
