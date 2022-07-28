@@ -3,24 +3,30 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "Tinkoff Sans";
-  src: url("../public/fonts/TinkoffSans.woff");
+  font-family: 'Tinkoff Sans';
+  src: url('../public/fonts/TinkoffSans.woff');
 }
 
 @layer base {
-  body{
+  body {
     @apply bg-tf-black text-tf-white;
   }
-  h1{
-    @apply text-3xl lg:text-5xl
+  h1 {
+    @apply text-3xl lg:text-5xl;
   }
-  h2{
-    @apply lg:text-3xl
+  h2 {
+    @apply lg:text-3xl;
   }
-  h3{
-    @apply lg:text-2xl
+  h3 {
+    @apply lg:text-2xl;
   }
-  ul{
-    @apply lg:text-lg
+  ul {
+    @apply lg:text-lg;
+  }
+}
+
+@layer utilities {
+  .square {
+    aspect-ratio: 1/1;
   }
 }
