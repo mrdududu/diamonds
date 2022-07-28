@@ -1,16 +1,30 @@
+<style scoped>
+.nav-item {
+  @apply block p-2;
+}
+a.nav-item {
+  @apply cursor-pointer;
+}
+</style>
 <template lang="pug">
-div.text-sm
+div(class="text-sm flex flex-row items-center")
   template(v-if="showPrev")
-    a(@click="pageClick(0)") &lt Предыдущая
-    a {{0}}
-    span
+    a.nav-item(@click="pageClick(pageIndex - 1)")
+      img.rotate-180(src="/img/icons/arrow_right.svg")
+    a.nav-item(@click="pageClick(pageIndex - 1)") Предыдущая
+    a.nav-item(@click="pageClick(0)") {{1}}
+    .nav-item
       | ...
-  a(v-for="page in pages") {{page}}
+  template(v-for="pIndex in pages" :key="pIndex")
+    span.nav-item(v-if="pIndex === pageIndex" class="text-tf-yellow") {{pIndex + 1}}
+    a.nav-item(v-else @click="pageClick(pIndex)") {{pIndex + 1}}
   template(v-if="showNext")
-    span
+    .nav-item
       | ...
-    a {{totalPages-1}}
-    a(@click="pageClick(totalPages-1)") Следующая &gt
+    a.nav-item(@click="pageClick(totalPages-1)") {{totalPages}}
+    a.nav-item(@click="pageClick(pageIndex + 1)") Следующая
+    a.nav-item(@click="pageClick(pageIndex + 1)")
+      img(src="/img/icons/arrow_right.svg")
 </template>
 <script setup>
 const props = defineProps({
