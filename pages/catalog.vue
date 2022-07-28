@@ -4,8 +4,8 @@ div(class="")
     h2 Каталог
   div(class="grid grid-cols-2 md:grid-cols-4 gap-12")
     CatalogPreview(v-for="item in items" :key="item")
-  div.my-16
-    CatalogPageNav(:totalPages="12" :pageIndex="8" :indent="2" @page-click="pageClick")
+  div.my-16.flex.justify-center
+    CatalogPageNav(:totalPages="12" :pageIndex="3" :indent="1" @page-click="pageClick")
 </template>
 <script setup>
 const items = Array.from(Array(12), (_, x) => x);
