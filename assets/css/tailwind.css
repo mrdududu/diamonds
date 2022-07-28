@@ -9,7 +9,7 @@
 
 @layer base {
   body {
-    @apply bg-tf-black text-tf-white;
+    @apply bg-tf-black text-tf-white font-tinkoff;
   }
   h1 {
     @apply text-3xl lg:text-5xl;
