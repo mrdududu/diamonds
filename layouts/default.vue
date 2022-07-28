@@ -18,10 +18,10 @@ div(class="container mx-auto grid grid-cols-1 lg:grid-cols-12 lg:gap-x-16")
         li Мобильность
   div(class="lg:col-start-3 lg:col-span-8")
     div(class="grid grid-cols-1 lg:grid-cols-4 lg:gap-x-16")
-      tfButton(href="/") Главная
-      tfButton(href="#best") Лучшее
-      tfButton(href="/catalog") Каталог
-      tfButton(href="#about") О компании
+      UikitTfButton(href="/") Главная
+      UikitTfButton(href="#best") Лучшее
+      UikitTfButton(href="/catalog") Каталог
+      UikitTfButton(href="#about") О компании
   div(class="lg:col-start-1 lg:col-span-12 my-32 flex justify-center")
     img(src="/img/arrow_down.svg")
   div(class="lg:col-start-1 lg:col-span-12")
@@ -43,12 +43,6 @@ div(class="container mx-auto grid grid-cols-1 lg:grid-cols-12 lg:gap-x-16")
           div(class="mb-14 text-3xl") MIUZ diamonds - официальный партнер Тинькофф, #[br] один из мировых лидеров в ювелирной отрасли
           div(class="grid grid-cols-1 lg:grid-cols-3")
             div
-              tfButton Каталог
+              UikitTfButton Каталог
 </template>
-<script>
-import tfButton from '~/components/uikit/tfButton.vue';
-export default {
-  components: { tfButton },
-  setup() {},
-};
-</script>
+<script setup></script>
