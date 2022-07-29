@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: 'Tinkoff Sans';
-  src: url('../public/fonts/TinkoffSans.woff');
+  src: url('/fonts/TinkoffSans.woff');
 }
 
 @layer base {
