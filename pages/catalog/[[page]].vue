@@ -3,9 +3,10 @@ div(class="")
   div.mb-8
     h2 Каталог
   div(class="grid grid-cols-2 md:grid-cols-4 gap-12")
-    CatalogPreview(v-for="item in items" :key="item")
+    CatalogPreview.cursor-pointer(v-for="item in diamonds.data" :key="item.id" :item="item.attributes")
   div.my-16.flex.justify-center
-    CatalogPageNav(:totalPages="state.totalPages" :pageIndex="pIndex" :indent="1" @page-click="pageClick")
+    CatalogPageNavTo(:totalPages="diamonds.meta.pagination.pageCount" :pageIndex="pIndex" :indent="1" baseUrl="/catalog")
+    //- CatalogPageNav(:totalPages="diamonds.meta.pagination.pageCount" :pageIndex="pIndex" :indent="1" @page-click="pageClick")
 </template>
 <script setup>
 import { reactive } from 'vue';
@@ -19,12 +20,16 @@ const pIndex = computed(() => {
   return page - 1;
 });
 
-const state = reactive({
-  totalPages: 12,
-});
+const url = () =>
+  'https://bbavbtoga8rvputnh66l.containers.yandexcloud.net/api/diamonds/?' +
+  new URLSearchParams({
+    'pagination[page]': pIndex.value + 1,
+  });
 
-const items = Array.from(Array(12), (_, x) => x);
+const { data: diamonds, pending, refresh, error } = await useFetch(() => url());
+
 const pageClick = (pageIndex) => {
+  console.log('pageClick', pageIndex);
   const url = pageIndex ? `/catalog/${pageIndex + 1}` : '/catalog';
   router.push(url);
 };
