@@ -12,7 +12,7 @@ div(class="")
 import { reactive } from 'vue';
 
 const route = useRoute();
-const router = useRouter();
+// const router = useRouter();
 const runtimeConfig = useRuntimeConfig();
 
 const pIndex = computed(() => {
