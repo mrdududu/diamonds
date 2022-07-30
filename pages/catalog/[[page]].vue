@@ -13,6 +13,7 @@ import { reactive } from 'vue';
 
 const route = useRoute();
 const router = useRouter();
+const runtimeConfig = useRuntimeConfig();
 
 const pIndex = computed(() => {
   let page = Number(route.params.page);
@@ -21,16 +22,17 @@ const pIndex = computed(() => {
 });
 
 const url = () =>
-  'https://bbavbtoga8rvputnh66l.containers.yandexcloud.net/api/diamonds/?' +
+  runtimeConfig.public.apiHost +
+  '/api/diamonds/?' +
   new URLSearchParams({
     'pagination[page]': pIndex.value + 1,
   });
 
 const { data: diamonds, pending, refresh, error } = await useFetch(() => url());
 
-const pageClick = (pageIndex) => {
-  console.log('pageClick', pageIndex);
-  const url = pageIndex ? `/catalog/${pageIndex + 1}` : '/catalog';
-  router.push(url);
-};
+// const pageClick = (pageIndex) => {
+//   console.log('pageClick', pageIndex);
+//   const url = pageIndex ? `/catalog/${pageIndex + 1}` : '/catalog';
+//   router.push(url);
+// };
 </script>
