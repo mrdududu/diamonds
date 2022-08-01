@@ -11,13 +11,13 @@ div(class="fixed inset-0 bg-black bg-opacity-20 overflow-y-auto h-full w-full")
           h2 Оформите заявку на приобретение
         div.text-sm Мы позвоним, чтобы уточнить детали. Будем сопровождать вас на всех этапах сделки.
         div.py-4
-          UikitTfInputText(name="name" placeholder="Ваше имя")
+          UikitTfInputText(name="name" placeholder="Ваше имя" v-model="state.form.name")
         div.py-4
-          UikitTfInputText(name="surname" placeholder="Ваша фамилия")
+          UikitTfInputText(name="surname" placeholder="Ваша фамилия" v-model="state.form.surname")
         div.py-4
-          UikitTfInputText(name="phone" placeholder="Телефон")
+          UikitTfInputText(name="phone" placeholder="Телефон" v-model="state.form.phone")
         div.py-4
-          UikitTfInputText(name="email" placeholder="Email")
+          UikitTfInputText(name="email" placeholder="Email" v-model="state.form.email")
         div(class="grid grid-cols-1 lg:grid-cols-3 lg:gap-x-8")
           div
             UikitTfButton Оформить заявку
@@ -30,6 +30,15 @@ div(class="fixed inset-0 bg-black bg-opacity-20 overflow-y-auto h-full w-full")
 // const props = defineProps({
 //   item: Object,
 // });
+
+const state = reactive({
+  form: {
+    name: 'sdcsdcsdc',
+    surname: '',
+    phone: '',
+    email: '',
+  },
+});
 
 const item = ref({
   dia_id: '65797074',
