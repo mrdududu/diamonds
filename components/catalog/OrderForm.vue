@@ -1,0 +1,46 @@
+<template lang="pug">
+div(class="fixed inset-0 bg-black bg-opacity-20 overflow-y-auto h-full w-full")
+  div(class="relative top-20 mx-auto p-5 max-w-screen-lg shadow-lg rounded-md bg-tf-gray-dark")
+    div.flex.flex-row-reverse
+      img.cursor-pointer(src="/img/icons/x.svg")
+    div(class="grid grid-cols-1 lg:grid-cols-3 lg:gap-x-16")
+      div
+        CatalogDiamondItem(:item="item")
+      div(class="lg:col-span-2")
+        div
+          h2 Оформите заявку на приобретение
+        div.text-sm Мы позвоним, чтобы уточнить детали. Будем сопровождать вас на всех этапах сделки.
+        div.py-4
+          UikitTfInputText(name="name" placeholder="Ваше имя")
+        div.py-4
+          UikitTfInputText(name="surname" placeholder="Ваша фамилия")
+        div.py-4
+          UikitTfInputText(name="phone" placeholder="Телефон")
+        div.py-4
+          UikitTfInputText(name="email" placeholder="Email")
+        div(class="grid grid-cols-1 lg:grid-cols-3 lg:gap-x-8")
+          div
+            UikitTfButton Оформить заявку
+          div(class="text-sm lg:col-span-2 flex items-center")
+            | Нажимая на кнопку “Оформить заявку” вы даете
+            | согласие на обработку персональных данных
+
+</template>
+<script setup>
+// const props = defineProps({
+//   item: Object,
+// });
+
+const item = ref({
+  dia_id: '65797074',
+  dia_shape: 'R57',
+  dia_color: '81',
+  dia_clarity: '02 A',
+  dia_color_int: 'K',
+  dia_clarity_int: 'IF',
+  dia_carat: '4.01',
+  dia_price_tink: ' 7,542,810',
+  createdAt: '2022-07-27T09:12:58.777Z',
+  updatedAt: '2022-07-27T09:12:58.776Z',
+});
+</script>

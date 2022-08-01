@@ -44,5 +44,6 @@ div(class="container mx-auto grid grid-cols-1 lg:grid-cols-12 lg:gap-x-16")
           div(class="grid grid-cols-1 lg:grid-cols-3")
             div
               UikitTfButton(to="/catalog") Каталог
+div(id="teleport-popupform")
 </template>
 <script setup></script>

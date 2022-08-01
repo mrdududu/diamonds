@@ -7,6 +7,8 @@ div(class="")
   div.my-16.flex.justify-center
     CatalogPageNavTo(:totalPages="diamonds.meta.pagination.pageCount" :pageIndex="pIndex" :indent="1" baseUrl="/catalog")
     //- CatalogPageNav(:totalPages="diamonds.meta.pagination.pageCount" :pageIndex="pIndex" :indent="1" @page-click="pageClick")
+Teleport(to="#teleport-popupform")
+  CatalogOrderForm
 </template>
 <script setup>
 import { reactive } from 'vue';
