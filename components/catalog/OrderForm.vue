@@ -22,7 +22,7 @@ div(class="fixed inset-0 bg-black bg-opacity-20 overflow-y-auto h-full w-full")
           div
             UikitTfButton Оформить заявку
           div(class="text-sm lg:col-span-2 flex items-center")
-            | Нажимая на кнопку “Оформить заявку” вы даете
+            | Нажимая на кнопку “Оформить заявку”, вы даете
             | согласие на обработку персональных данных
 
 </template>
