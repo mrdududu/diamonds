@@ -1,6 +1,6 @@
 <template lang="pug">
 .relative
-  input(:modelValue="modelValue" @update:modelValue="updateInputValue" type="text" :name="name" :placeholder="name" class="peer h-10 w-full border-b border-tf-white text-tf-white placeholder-transparent bg-transparent focus:outline-none focus:border-tf-yellow")
+  input(:value="inputValue" @input="updateInputValue" type="text" :name="name" :placeholder="name" class="peer h-10 w-full border-b border-tf-white text-tf-white placeholder-transparent bg-transparent focus:outline-none focus:border-tf-yellow")
   label(:for="name" class="absolute left-0 -top-3.5 text-tf-white text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-tf-white peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-tf-yellow peer-focus:text-sm") {{placeholder}}
 </template>
 <script setup>
@@ -14,7 +14,7 @@ const emit = defineEmits(['update:modelValue']);
 
 const inputValue = computed(() => props.modelValue);
 
-const updateInputValue = (val) => {
-  console.log('updateInputValue', { val });
+const updateInputValue = (event) => {
+  emit('update:modelValue', event.target.value);
 };
 </script>
