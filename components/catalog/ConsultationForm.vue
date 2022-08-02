@@ -1,0 +1,35 @@
+<template lang="pug">
+CatalogModalLayout(:showClose="true" @closeClick="emit('closeClick')")
+  div(class="")
+    div.mb-2
+      h2 Оформите заявку на приобретение
+    div.mb-10.text-sm Мы позвоним, чтобы уточнить детали. Будем сопровождать вас на всех этапах сделки.
+    div.mb-10
+      UikitTfTextField(name="name" placeholder="Ваше имя" v-model="state.form.name")
+    div.mb-10
+      UikitTfTextField(name="surname" placeholder="Ваша фамилия" v-model="state.form.surname")
+    div.mb-10
+      UikitTfTextField(name="budget" placeholder="Размер бюджета для инвестиций" v-model="state.form.budget")
+    div.mb-10
+      UikitTfTextField(name="phone" placeholder="* Телефон" v-model="state.form.phone")
+    div.mb-10
+      UikitTfTextField(name="email" placeholder="* Email" v-model="state.form.email")
+    CatalogSendRequest(class="grid grid-cols-1 lg:grid-cols-3 lg:gap-x-8" @sendRequestClick="sendRequestClick")
+</template>
+<script setup>
+const emit = defineEmits(['closeClick']);
+
+const state = reactive({
+  form: {
+    name: '',
+    surname: '',
+    budget: '',
+    phone: '',
+    email: '',
+  },
+});
+
+const sendRequestClick = () => {
+  console.log('sendRequestClick');
+};
+</script>
