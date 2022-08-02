@@ -23,6 +23,12 @@
   ul {
     @apply lg:text-lg;
   }
+  a {
+    @apply text-tf-yellow;
+  }
+  a:hover {
+    @apply underline;
+  }
 }
 
 @layer utilities {

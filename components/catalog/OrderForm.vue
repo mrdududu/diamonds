@@ -7,24 +7,24 @@ div(class="fixed inset-0 bg-black bg-opacity-20 overflow-y-auto h-full w-full")
       div
         CatalogDiamondItem(:item="item")
       div(class="lg:col-span-2")
-        div
+        div.mb-2
           h2 Оформите заявку на приобретение
-        div.text-sm Мы позвоним, чтобы уточнить детали. Будем сопровождать вас на всех этапах сделки.
-        div.py-4
-          UikitTfInputText(name="name" placeholder="Ваше имя" v-model="state.form.name")
-        div.py-4
-          UikitTfInputText(name="surname" placeholder="Ваша фамилия" v-model="state.form.surname")
-        div.py-4
-          UikitTfInputText(name="phone" placeholder="Телефон" v-model="state.form.phone")
-        div.py-4
-          UikitTfInputText(name="email" placeholder="Email" v-model="state.form.email")
+        div.mb-10.text-sm Мы позвоним, чтобы уточнить детали. Будем сопровождать вас на всех этапах сделки.
+        div.mb-10
+          UikitTfTextField(name="name" placeholder="Ваше имя" v-model="state.form.name")
+        div.mb-10
+          UikitTfTextField(name="surname" placeholder="Ваша фамилия" v-model="state.form.surname")
+        div.mb-10
+          UikitTfTextField(name="phone" placeholder="* Телефон" v-model="state.form.phone")
+        div.mb-10
+          UikitTfTextField(name="email" placeholder="* Email" v-model="state.form.email")
         div(class="grid grid-cols-1 lg:grid-cols-3 lg:gap-x-8")
           div
             UikitTfButton Оформить заявку
           div(class="text-sm lg:col-span-2 flex items-center")
-            | Нажимая на кнопку “Оформить заявку”, вы даете
-            | согласие на обработку персональных данных
-
+            span
+              | Нажимая на кнопку “Оформить заявку”, вы даете
+              | согласие на обработку #[a(href="/somelink") персональных данных]
 </template>
 <script setup>
 // const props = defineProps({
@@ -33,7 +33,7 @@ div(class="fixed inset-0 bg-black bg-opacity-20 overflow-y-auto h-full w-full")
 
 const state = reactive({
   form: {
-    name: 'sdcsdcsdc',
+    name: '',
     surname: '',
     phone: '',
     email: '',
