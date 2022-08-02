@@ -7,8 +7,8 @@ div(class="")
   div.my-16.flex.justify-center
     CatalogPageNavTo(:totalPages="diamonds.meta.pagination.pageCount" :pageIndex="pIndex" :indent="1" baseUrl="/catalog")
     //- CatalogPageNav(:totalPages="diamonds.meta.pagination.pageCount" :pageIndex="pIndex" :indent="1" @page-click="pageClick")
-Teleport(to="#teleport-popupform")
-  CatalogOrderForm(v-if="state.selectedDiamond" :item="state.selectedDiamond" @closeClick="closeClick")
+  Teleport(to="#teleport-popupform")
+    CatalogOrderForm(v-if="state.selectedDiamond" :item="state.selectedDiamond" @closeClick="closeClick")
 </template>
 <script setup>
 const route = useRoute();
