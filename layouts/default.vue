@@ -26,7 +26,7 @@ div(class="container mx-auto max-w-screen-lg")
     UikitTfButton(to="/catalog") Каталог
     UikitTfButton(to="/#about") О компании
     UikitTfButton(@click="showConsultationForm") Консультация
-  div.flex.justify-center.my-32
+  div.flex.justify-center.my-16
     img(src="/img/arrow_down.svg")
   div
     slot
