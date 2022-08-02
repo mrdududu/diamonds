@@ -9,6 +9,8 @@ div(class="")
     //- CatalogPageNav(:totalPages="diamonds.meta.pagination.pageCount" :pageIndex="pIndex" :indent="1" @page-click="pageClick")
   Teleport(to="#teleport-popupform")
     CatalogOrderForm(v-if="state.selectedDiamond" :item="state.selectedDiamond" @closeClick="closeClick")
+  Teleport(to="#teleport-popupform")
+    CatalogLoader(v-if="pending")
 </template>
 <script setup>
 const route = useRoute();
