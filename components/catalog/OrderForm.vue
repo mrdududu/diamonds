@@ -1,3 +1,11 @@
+<style scoped>
+span > a {
+  @apply text-tf-yellow;
+}
+span > a:hover {
+  @apply underline;
+}
+</style>
 <template lang="pug">
 div(class="fixed inset-0 bg-black bg-opacity-20 overflow-y-auto h-full w-full")
   div(class="relative top-20 mx-auto p-5 max-w-screen-lg shadow-lg rounded-md bg-tf-gray-dark")
