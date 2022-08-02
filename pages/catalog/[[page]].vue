@@ -35,7 +35,6 @@ const url = () =>
 const { data: diamonds, pending, refresh, error } = await useFetch(() => url());
 
 const itemClick = (item) => {
-  console.log(item);
   state.selectedDiamond = item;
 };
 
