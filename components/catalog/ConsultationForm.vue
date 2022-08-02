@@ -1,5 +1,5 @@
 <template lang="pug">
-CatalogModalLayout(:showClose="true" @closeClick="emit('closeClick')")
+CatalogModalLayout(:showClose="true" @closeClick="emit('closeClick')" class="max-w-screen-md")
   div(class="")
     div.mb-2
       h2 Оформите заявку на приобретение
