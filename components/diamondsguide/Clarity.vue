@@ -6,5 +6,5 @@ DiamondsguideLayout
     DiamondsguideGrid(imgKey="clarity" :gridData="gridData")
 </template>
 <script setup>
-import gridData from '~/components/DiamondsGuide/data/clarity.json';
+import gridData from '~/data/clarity.json';
 </script>

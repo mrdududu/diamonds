@@ -6,5 +6,5 @@ DiamondsguideLayout
     DiamondsguideGrid(imgKey="color" :gridData="gridData")
 </template>
 <script setup>
-import gridData from '~/components/DiamondsGuide/data/colors.json';
+import gridData from '~/data/colors.json';
 </script>

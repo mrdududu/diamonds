@@ -11,6 +11,6 @@ DiamondsguideLayout
         div(class="text-sm") {{item.desc}}
 </template>
 <script setup>
-import gridData from '~/components/DiamondsGuide/data/shape.json';
+import gridData from '~/data/shape.json';
 const imgKey = 'shape';
 </script>

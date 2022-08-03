@@ -15,7 +15,7 @@ DiamondsguideLayout
 </template>
 
 <script setup>
-import sizesData from '~/components/DiamondsGuide/data/size.json';
+import sizesData from '~/data/size.json';
 
 const formatSizeString = (size) => {
   if (size.mm) {
