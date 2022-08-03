@@ -1,6 +1,6 @@
 <template lang="pug">
 CatalogModalLayout(:showClose="true" @closeClick="emit('closeClick')")
-  div(class="grid grid-cols-1 lg:grid-cols-3 lg:gap-x-16")
+  div(v-if="!state.complete" class="grid grid-cols-1 lg:grid-cols-3 lg:gap-x-16")
     div
       CatalogDiamondItem(:item="item")
     div(class="lg:col-span-2")
@@ -16,6 +16,13 @@ CatalogModalLayout(:showClose="true" @closeClick="emit('closeClick')")
       div.mb-10
         UikitTfTextField(name="email" placeholder="* Email" v-model="state.form.email")
       CatalogSendRequest(class="grid grid-cols-1 lg:grid-cols-3 lg:gap-x-8" @sendRequestClick="sendRequestClick")
+  div(v-else class="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-16")
+    div(class="border-r border-tf-yellow")
+      CatalogDiamondItem(:item="item" class="grid lg:grid-cols-2 lg:gap-x-6")
+    div(class="flex flex-col justify-center")
+      div.mb-2
+        h2 Ваша заявка оформлена
+      div.text-sm Вскоре мы свяжемся с Вами #[br] и уточним все детали.
 </template>
 <script setup>
 const props = defineProps({
@@ -31,6 +38,7 @@ const state = reactive({
     phone: '',
     email: '',
   },
+  complete: false,
 });
 
 // const item = ref({
@@ -47,5 +55,6 @@ const state = reactive({
 // });
 const sendRequestClick = () => {
   console.log('sendRequestClick');
+  state.complete = true;
 };
 </script>
