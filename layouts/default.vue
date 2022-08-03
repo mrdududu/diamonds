@@ -25,7 +25,7 @@ div
       UikitTfButton(to="/#best") Лучшее
       UikitTfButton(to="/catalog") Каталог
       UikitTfButton(to="/#about") О компании
-      UikitTfButton(@click="showConsultationForm") Консультация
+      UikitTfButtonAccent(@click="showConsultationForm") Консультация
     div.flex.justify-center.my-16
       img(src="/img/arrow_down.svg")
     div
