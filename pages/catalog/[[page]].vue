@@ -1,5 +1,5 @@
 <template lang="pug">
-div(class="")
+div(class="mx-10 lg:mx-0")
   div.mb-8
     h2 Каталог
   div(class="grid grid-cols-2 md:grid-cols-4 gap-12")
