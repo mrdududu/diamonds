@@ -5,8 +5,8 @@ p {
 </style>
 <template lang="pug">
 div
-  div(class="grid grid-cols-1 lg:grid-cols-6")
-    div(class="lg:col-start-2 lg:col-span-4")
+  div(class="md:grid md:grid-cols-6 mx-10 md:mx-0")
+    div(class="md:col-start-2 md:col-span-4")
       div(class="text-center mb-2")
         h3 ДИНАМИКА ДОХОДНОСТИ
       div(class="text-center mb-10") Сравнительная динамика цен на бриллианты с 2005 по 2021 гг
@@ -29,7 +29,7 @@ div
           |Они показывают самую высокую доходность за последние 15 лет.
       div(class="flex justify-center mb-20")
         UikitTfButtonAccent(to="/" class="px-10") Сделать заявку на эксклюзивный камень
-  div
+  div(class="mx-10 lg:mx-0")
     UikitTfTabMenu(:tabs="state.tabs" @tabClick="tabClick")
     DiamondsguideColors(v-if="'colors' === selectedTab")
     DiamondsguideClarity(v-if="'clarity' === selectedTab")
