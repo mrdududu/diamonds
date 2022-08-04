@@ -1,9 +1,9 @@
 <template lang="pug">
 CatalogModalLayout(:showClose="true" @closeClick="emit('closeClick')")
-  div(v-if="!state.complete" class="grid grid-cols-1 lg:grid-cols-3 lg:gap-x-16")
-    div
-      CatalogDiamondItem(:item="item")
-    div(class="lg:col-span-2")
+  div(v-if="!state.complete" class="md:grid md:grid-cols-3 md:gap-x-16")
+    div(class="pb-6 md:pb-0 border-b border-tf-yellow md:border-b-0")
+      CatalogDiamondItem(:item="item" class="grid grid-cols-2 gap-x-6 md:block max-w-sm")
+    div(class="md:col-span-2 pt-6 md:pt-0")
       div.mb-2
         h2 Оформите заявку на приобретение
       div.mb-10.text-sm Мы позвоним, чтобы уточнить детали. Будем сопровождать вас на всех этапах сделки.
@@ -15,11 +15,11 @@ CatalogModalLayout(:showClose="true" @closeClick="emit('closeClick')")
         UikitTfTextField(name="phone" placeholder="* Телефон" v-model="state.form.phone")
       div.mb-10
         UikitTfTextField(name="email" placeholder="* Email" v-model="state.form.email")
-      CatalogSendRequest(class="grid grid-cols-1 lg:grid-cols-3 lg:gap-x-8" @sendRequestClick="sendRequestClick")
+      CatalogSendRequest(class="grid grid-cols-1 lg:grid-cols-3 lg:gap-x-8 gap-y-6" @sendRequestClick="sendRequestClick")
   div(v-else class="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-16")
-    div(class="border-r border-tf-yellow")
-      CatalogDiamondItem(:item="item" class="grid lg:grid-cols-2 lg:gap-x-6")
-    div(class="flex flex-col justify-center")
+    div(class="pb-6 lg:pb-0 border-b border-tf-yellow lg:border-b-0 lg:border-r")
+      CatalogDiamondItem(:item="item" class="grid grid-cols-2 gap-x-6 max-w-sm")
+    div(class="pt-6 lg:pt-0 flex flex-col justify-center")
       div.mb-2
         h2 Ваша заявка оформлена
       div.text-sm Вскоре мы свяжемся с Вами #[br] и уточним все детали.

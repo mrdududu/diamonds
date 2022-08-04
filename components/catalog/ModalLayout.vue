@@ -1,7 +1,7 @@
 <template lang="pug">
-div(class="fixed inset-0 bg-black bg-opacity-20 overflow-y-auto h-full w-full" @click.self="emit('closeClick')")
-  div(class="relative top-20 mx-auto p-16 max-w-screen-lg shadow-lg rounded-md bg-tf-gray-dark" :class="class")
-    div.flex.flex-row-reverse(v-if="showClose")
+div(class="fixed inset-0 bg-tf-gray-dark md:bg-black md:bg-opacity-20 overflow-y-auto h-full w-full" @click.self="emit('closeClick')")
+  div(class="relative md:top-20 md:mx-auto p-8 md:p-16 md:max-w-screen-md lg:max-w-screen-lg md:shadow-lg md:rounded-md bg-tf-gray-dark" :class="class")
+    div(v-if="showClose" class="flex flex-row-reverse mb-8 md:mb-0")
       img.cursor-pointer(src="/img/icons/x.svg" @click="emit('closeClick')")
     slot
 </template>

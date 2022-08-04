@@ -1,5 +1,5 @@
 <template lang="pug">
-CatalogModalLayout(:showClose="true" @closeClick="emit('closeClick')" class="max-w-screen-md")
+CatalogModalLayout(:showClose="true" @closeClick="emit('closeClick')" class="lg:max-w-screen-md")
   div(v-if="!state.complete")
     div.mb-2
       h2 Оформите заявку на приобретение
@@ -14,7 +14,7 @@ CatalogModalLayout(:showClose="true" @closeClick="emit('closeClick')" class="max
       UikitTfTextField(name="phone" placeholder="* Телефон" v-model="state.form.phone")
     div.mb-10
       UikitTfTextField(name="email" placeholder="* Email" v-model="state.form.email")
-    CatalogSendRequest(class="grid grid-cols-1 lg:grid-cols-3 lg:gap-x-8" @sendRequestClick="sendRequestClick")
+    CatalogSendRequest(class="grid grid-cols-1 md:grid-cols-3 md:gap-x-8 gap-y-6" @sendRequestClick="sendRequestClick")
   div(v-else class="flex flex-col justify-center")
     div.mb-2
       h2 Ваша заявка оформлена

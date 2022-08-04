@@ -10,7 +10,7 @@ span > a:hover {
 div
   div
     UikitTfButtonAccent(@click="emit('sendRequestClick')") Оформить заявку
-  div(class="text-sm lg:col-span-2 flex items-center")
+  div(class="text-sm md:col-span-2 flex items-center")
     span
       | Нажимая на кнопку “Оформить заявку”, вы даете
       | согласие на обработку #[a(href="/somelink") персональных данных]
