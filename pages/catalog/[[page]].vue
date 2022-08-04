@@ -1,8 +1,8 @@
 <template lang="pug">
-div(class="mx-10 lg:mx-0")
+div(class="mx-4 lg:mx-0")
   div.mb-8
     h2 Каталог
-  div(class="grid grid-cols-2 md:grid-cols-4 gap-12")
+  div(class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-12")
     CatalogPreview.cursor-pointer(v-for="item in diamonds.data" :key="item.id" :item="item.attributes" @click="itemClick(item.attributes)")
   div.my-16.flex.justify-center
     CatalogPageNavTo(:totalPages="diamonds.meta.pagination.pageCount" :pageIndex="pIndex" :indent="1" baseUrl="/catalog")
