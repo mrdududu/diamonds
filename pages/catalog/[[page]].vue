@@ -2,15 +2,17 @@
 div(class="mx-4 lg:mx-0")
   div.mb-8
     h2 Каталог
-  div(class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-12")
+  div(v-if="diamonds?.data" class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-12")
     CatalogPreview.cursor-pointer(v-for="item in diamonds.data" :key="item.id" :item="item.attributes" @click="itemClick(item.attributes)")
-  div.my-16.flex.justify-center
+  div(v-if="diamonds?.data" class="my-16 flex justify-center")
     CatalogPageNavTo(:totalPages="diamonds.meta.pagination.pageCount" :pageIndex="pIndex" :indent="1" baseUrl="/catalog")
     //- CatalogPageNav(:totalPages="diamonds.meta.pagination.pageCount" :pageIndex="pIndex" :indent="1" @page-click="pageClick")
-  Teleport(to="#teleport-popupform")
-    CatalogOrderForm(v-if="state.selectedDiamond" :item="state.selectedDiamond" @closeClick="closeClick")
-  Teleport(to="#teleport-popupform")
-    CatalogLoader(v-if="pending")
+  ClientOnly
+    Teleport(to="#teleport-popupform")
+      CatalogOrderForm(v-if="state.selectedDiamond" :item="state.selectedDiamond" @closeClick="closeClick")
+  ClientOnly
+    Teleport(to="#teleport-popupform")
+      CatalogLoader(v-if="pending")
 </template>
 <script setup>
 const route = useRoute();
@@ -34,7 +36,16 @@ const url = () =>
     'pagination[page]': pIndex.value + 1,
   });
 
-const { data: diamonds, pending, refresh, error } = await useFetch(() => url());
+const {
+  data: diamonds,
+  pending,
+  refresh,
+  error,
+} = await useFetch(() => url(), { lazy: true });
+// const { data: diamonds, pending, refresh, error } = await useFetch(url());
+// const { data: diamonds, pending, refresh, error } = useLazyFetch(() => url());
+
+console.log({ diamonds, pending, refresh, error });
 
 const itemClick = (item) => {
   state.selectedDiamond = item;
