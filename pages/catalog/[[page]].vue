@@ -9,7 +9,8 @@ div(class="mx-4 lg:mx-0" ref="refCatalog")
     //- CatalogPageNav(:totalPages="diamonds.meta.pagination.pageCount" :pageIndex="pIndex" :indent="1" @page-click="pageClick")
   ClientOnly
     Teleport(to="#teleport-popupform")
-      CatalogOrderForm(v-if="state.selectedDiamond" :item="state.selectedDiamond" @closeClick="closeClick")
+      UikitTransitionSlide
+        CatalogOrderForm(v-if="state.selectedDiamond" :item="state.selectedDiamond" @closeClick="closeClick")
   ClientOnly
     Teleport(to="#teleport-popupform")
       CatalogLoader(v-if="pending")
