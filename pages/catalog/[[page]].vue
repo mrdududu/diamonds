@@ -2,14 +2,15 @@
 div(class="mx-4 lg:mx-0" ref="refCatalog")
   div.mb-8
     h2 Каталог
-  div(v-if="diamonds?.data" class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-12 md:gap-y-20")
-    CatalogPreview(v-for="item in diamonds.data" :key="item.id" :item="item.attributes" @click="itemClick(item.attributes)" class="cursor-pointer")
-  div(v-if="diamonds?.data" class="my-16 flex justify-center")
+  UikitTransitionScale(direction="left")
+    div(v-if="!pending" class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-12 md:gap-y-20")
+      CatalogPreview(v-for="item in diamonds.data" :key="item.id" :item="item.attributes" @click="itemClick(item.attributes)" class="cursor-pointer")
+  div(v-if="!pending" class="my-16 flex justify-center")
     CatalogPageNavTo(:totalPages="diamonds.meta.pagination.pageCount" :pageIndex="pIndex" :indent="1" baseUrl="/catalog")
     //- CatalogPageNav(:totalPages="diamonds.meta.pagination.pageCount" :pageIndex="pIndex" :indent="1" @page-click="pageClick")
   ClientOnly
     Teleport(to="#teleport-popupform")
-      UikitTransitionSlide
+      UikitTransitionScale
         CatalogOrderForm(v-if="state.selectedDiamond" :item="state.selectedDiamond" @closeClick="closeClick")
   ClientOnly
     Teleport(to="#teleport-popupform")
