@@ -24,7 +24,7 @@ div
       UikitTfButton(to="/") Главная
       UikitTfButton(to="/#best") Лучшее
       UikitTfButton(to="/catalog") Каталог
-      UikitTfButton(to="/#about") О компании
+      UikitTfButton(@click="scrollToAbout") О компании
       UikitTfButtonAccent(@click="showConsultationForm") Консультация
     div.flex.justify-center.my-16
       img(src="/img/arrow_down.svg")
@@ -33,7 +33,7 @@ div
     div
       img(src="/img/photos/diamonds.jpg" class="block w-full")
     div(class="px-14")
-      div(class="py-16")
+      div(class="py-16" ref="refAbout")
         h2 О компании
         div(class="mt-8 text-xl space-y-5")
           p MIUZ diamonds - одно из крупнейших предприятий в мире, которое обеспечивает закрытый цикл производства от добычи алмаза до изготовления ювелирного изделия.
@@ -51,6 +51,8 @@ div
   div(id="teleport-popupform")
 </template>
 <script setup>
+const refAbout = ref(null);
+
 const state = reactive({
   ConsultationFormVisible: false,
 });
@@ -61,5 +63,9 @@ const showConsultationForm = () => {
 
 const closeConsultationForm = () => {
   state.ConsultationFormVisible = false;
+};
+
+const scrollToAbout = () => {
+  refAbout.value.scrollIntoView({ behavior: 'smooth' });
 };
 </script>

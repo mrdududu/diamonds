@@ -1,5 +1,5 @@
 <template lang="pug">
-div(class="mx-4 lg:mx-0")
+div(class="mx-4 lg:mx-0" ref="refCatalog")
   div.mb-8
     h2 Каталог
   div(v-if="diamonds?.data" class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-12")
@@ -15,6 +15,7 @@ div(class="mx-4 lg:mx-0")
       CatalogLoader(v-if="pending")
 </template>
 <script setup>
+const refCatalog = ref(null);
 const route = useRoute();
 // const router = useRouter();
 const runtimeConfig = useRuntimeConfig();
@@ -44,8 +45,14 @@ const {
 } = await useFetch(() => url(), { lazy: true });
 // const { data: diamonds, pending, refresh, error } = await useFetch(url());
 // const { data: diamonds, pending, refresh, error } = useLazyFetch(() => url());
+// if (refCatalog.value) refCatalog.value.scrollIntoView({ behavior: 'smooth' });
 
 console.log({ diamonds, pending, refresh, error });
+
+watch(diamonds, (val) => {
+  if (val && refCatalog.value)
+    refCatalog.value.scrollIntoView({ behavior: 'smooth' });
+});
 
 const itemClick = (item) => {
   state.selectedDiamond = item;
