@@ -38,7 +38,6 @@ div
     DiamondsguideSize(v-if="'size' === selectedTab")
 </template>
 <script setup>
-import { reactive } from 'vue';
 const state = reactive({
   tabs: [
     { key: 'colors', text: 'Цвет', selected: true },
