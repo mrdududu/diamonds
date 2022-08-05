@@ -1,3 +1,15 @@
+<style scoped>
+.slide-enter-active,
+.slide-leave-active {
+  transform-origin: top;
+  transition: transform 0.2s ease-in-out;
+}
+
+.slide-enter-from,
+.slide-leave-to {
+  transform: scaleY(0);
+}
+</style>
 <template lang="pug">
 div
   .container(class="mx-auto max-w-screen-lg")
@@ -47,7 +59,9 @@ div
           div(class="grid grid-cols-1 md:grid-cols-3")
             div
               UikitTfButtonAccent(to="/catalog") Каталог
-  CatalogConsultationForm(v-if="state.ConsultationFormVisible" @closeClick="closeConsultationForm")
+  ClientOnly
+    Transition(name="slide")
+      CatalogConsultationForm(v-if="state.ConsultationFormVisible" @closeClick="closeConsultationForm")
   div(id="teleport-popupform")
 </template>
 <script setup>
