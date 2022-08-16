@@ -31,6 +31,11 @@ div
     div
       slot
     div
+      div
+        h2 Лучшее
+      div
+        BestProductCard(:item="topItem")
+    div
       img(src="/img/photos/diamonds.jpg" class="block w-full")
     div(class="px-14")
       div(class="py-16" ref="refAbout")
@@ -54,6 +59,19 @@ div
 </template>
 <script setup>
 const refAbout = ref(null);
+
+const topItem = {
+  dia_id: '65797074',
+  dia_shape: 'R57',
+  dia_color: '81',
+  dia_clarity: '02 A',
+  dia_color_int: 'K',
+  dia_clarity_int: 'IF',
+  dia_carat: '4.01',
+  dia_price_tink: ' 7,542,810',
+  createdAt: '2022-07-27T09:12:58.777Z',
+  updatedAt: '2022-07-27T09:12:58.776Z',
+};
 
 const state = reactive({
   ConsultationFormVisible: false,
