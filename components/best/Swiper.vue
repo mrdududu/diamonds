@@ -1,4 +1,7 @@
 <style>
+.swiper {
+  z-index: 0;
+}
 .swiper-slide {
   display: flex;
   justify-content: center;
