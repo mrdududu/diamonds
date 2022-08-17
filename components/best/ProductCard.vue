@@ -19,10 +19,12 @@ div(class="md:max-w-xl grid grid-cols-2 gap-x-5 md:gap-x-10 py-4 md:py-12 px-6 m
     div Тип огранки: A
     div Цена: {{item.dia_price_tink}} руб
     div(class="mt-6")
-      UikitTfButtonAccent Оставить заявку
+      UikitTfButtonAccent(@click="showOrderForm(item)") Оставить заявку
 </template>
 <script setup>
 const props = defineProps({
   item: Object,
 });
+
+const { show: showOrderForm } = useOrderForm();
 </script>

@@ -54,13 +54,23 @@ div
             div
               UikitTfButtonAccent(to="/catalog") Каталог
   ClientOnly
+    UikitTransitionScale
+      CatalogOrderForm(v-if="orderFormState.selectedDiamond" :item="orderFormState.selectedDiamond" @closeClick="hideOrderForm")
+  ClientOnly
     UikitTransitionSlide
-      CatalogConsultationForm(v-if="state.ConsultationFormVisible" @closeClick="closeConsultationForm")
+      CatalogConsultationForm(v-if="visibleConsultationForm" @closeClick="hideConsultationForm")
   div(id="teleport-popupform")
 </template>
 <script setup>
 const refAbout = ref(null);
 const refBest = ref(null);
+
+const { state: orderFormState, hide: hideOrderForm } = useOrderForm();
+const {
+  visible: visibleConsultationForm,
+  hide: hideConsultationForm,
+  show: showConsultationForm,
+} = useConsultationForm();
 
 const topItems = Array.from(Array(10), (_, i) => ({
   dia_id: '65797074' + i,
@@ -74,18 +84,6 @@ const topItems = Array.from(Array(10), (_, i) => ({
   createdAt: '2022-07-27T09:12:58.777Z',
   updatedAt: '2022-07-27T09:12:58.776Z',
 }));
-
-const state = reactive({
-  ConsultationFormVisible: false,
-});
-
-const showConsultationForm = () => {
-  state.ConsultationFormVisible = true;
-};
-
-const closeConsultationForm = () => {
-  state.ConsultationFormVisible = false;
-};
 
 const scrollToAbout = () => {
   refAbout.value.scrollIntoView({ behavior: 'smooth' });
