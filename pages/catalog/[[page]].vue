@@ -4,14 +4,10 @@ div(class="mx-4 lg:mx-0" ref="refCatalog")
     h2 Каталог
   UikitTransitionScale(direction="left")
     div(v-if="!pending" class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-12 md:gap-y-20")
-      CatalogPreview(v-for="item in diamonds.data" :key="item.id" :item="item.attributes" @click="itemClick(item.attributes)" class="cursor-pointer")
+      CatalogPreview(v-for="item in diamonds.data" :key="item.id" :item="item.attributes" @click="showOrderForm(item.attributes)" class="cursor-pointer")
   div(v-if="!pending" class="my-16 flex justify-center")
     CatalogPageNavTo(:totalPages="diamonds.meta.pagination.pageCount" :pageIndex="pIndex" :indent="1" baseUrl="/catalog")
     //- CatalogPageNav(:totalPages="diamonds.meta.pagination.pageCount" :pageIndex="pIndex" :indent="1" @page-click="pageClick")
-  ClientOnly
-    Teleport(to="#teleport-popupform")
-      UikitTransitionScale
-        CatalogOrderForm(v-if="state.selectedDiamond" :item="state.selectedDiamond" @closeClick="closeClick")
   ClientOnly
     Teleport(to="#teleport-popupform")
       CatalogLoader(v-if="pending")
@@ -22,9 +18,7 @@ const route = useRoute();
 // const router = useRouter();
 const runtimeConfig = useRuntimeConfig();
 
-const state = reactive({
-  selectedDiamond: null,
-});
+const { show: showOrderForm } = useOrderForm();
 
 const pIndex = computed(() => {
   let page = Number(route.params.page);
@@ -55,14 +49,6 @@ watch(diamonds, (val) => {
   if (val && refCatalog.value)
     refCatalog.value.scrollIntoView({ behavior: 'smooth' });
 });
-
-const itemClick = (item) => {
-  state.selectedDiamond = item;
-};
-
-const closeClick = () => {
-  state.selectedDiamond = null;
-};
 
 // const pageClick = (pageIndex) => {
 //   console.log('pageClick', pageIndex);

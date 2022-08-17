@@ -22,7 +22,7 @@ div
             li Мобильность
     div(class="grid grid-cols-1 md:grid-cols-5 gap-y-8 md:gap-x-10 px-10 lg:px-0")
       UikitTfButton(to="/") Главная
-      UikitTfButton(to="/#best") Лучшее
+      UikitTfButton(@click="scrollToBest") Лучшее
       UikitTfButton(to="/catalog") Каталог
       UikitTfButton(@click="scrollToAbout") О компании
       UikitTfButtonAccent(@click="showConsultationForm") Консультация
@@ -30,6 +30,12 @@ div
       img(src="/img/arrow_down.svg")
     div
       slot
+    div.py-16
+      div(class="px-4 md:px-0" ref="refBest")
+        h2 Лучшее
+      div(class="mt-8")
+        ClientOnly
+          BestSwiper(:items="topItems")
     div
       img(src="/img/photos/diamonds.jpg" class="block w-full")
     div(class="px-14")
@@ -48,26 +54,42 @@ div
             div
               UikitTfButtonAccent(to="/catalog") Каталог
   ClientOnly
+    UikitTransitionScale
+      CatalogOrderForm(v-if="orderFormState.selectedDiamond" :item="orderFormState.selectedDiamond" @closeClick="hideOrderForm")
+  ClientOnly
     UikitTransitionSlide
-      CatalogConsultationForm(v-if="state.ConsultationFormVisible" @closeClick="closeConsultationForm")
+      CatalogConsultationForm(v-if="visibleConsultationForm" @closeClick="hideConsultationForm")
   div(id="teleport-popupform")
 </template>
 <script setup>
 const refAbout = ref(null);
+const refBest = ref(null);
 
-const state = reactive({
-  ConsultationFormVisible: false,
-});
+const { state: orderFormState, hide: hideOrderForm } = useOrderForm();
+const {
+  visible: visibleConsultationForm,
+  hide: hideConsultationForm,
+  show: showConsultationForm,
+} = useConsultationForm();
 
-const showConsultationForm = () => {
-  state.ConsultationFormVisible = true;
-};
-
-const closeConsultationForm = () => {
-  state.ConsultationFormVisible = false;
-};
+const topItems = Array.from(Array(10), (_, i) => ({
+  dia_id: '65797074' + i,
+  dia_shape: 'R57',
+  dia_color: '81',
+  dia_clarity: '02 A',
+  dia_color_int: 'K',
+  dia_clarity_int: 'IF',
+  dia_carat: 4.01 + i,
+  dia_price_tink: ' 7,542,810',
+  createdAt: '2022-07-27T09:12:58.777Z',
+  updatedAt: '2022-07-27T09:12:58.776Z',
+}));
 
 const scrollToAbout = () => {
   refAbout.value.scrollIntoView({ behavior: 'smooth' });
+};
+
+const scrollToBest = () => {
+  refBest.value.scrollIntoView({ behavior: 'smooth' });
 };
 </script>

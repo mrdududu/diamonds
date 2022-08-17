@@ -28,7 +28,7 @@ div
           |от 4 карат считаются наиболее пригодными для инвестиционных целей из бесцветных.
           |Они показывают самую высокую доходность за последние 15 лет.
       div(class="flex justify-center mb-20")
-        UikitTfButtonAccent(to="/" class="px-5 md:px-10") Сделать заявку на эксклюзивный камень
+        UikitTfButtonAccent(@click="showConsultationForm" class="px-5 md:px-10") Сделать заявку на эксклюзивный камень
   div(class="mx-4 lg:mx-0")
     UikitTfTabMenu(:tabs="state.tabs" @tabClick="tabClick")
   div(class="mx-10 lg:mx-0")
@@ -38,6 +38,8 @@ div
     DiamondsguideSize(v-if="'size' === selectedTab")
 </template>
 <script setup>
+const { show: showConsultationForm } = useConsultationForm();
+
 const state = reactive({
   tabs: [
     { key: 'colors', text: 'Цвет', selected: true },

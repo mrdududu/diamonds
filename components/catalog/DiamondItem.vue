@@ -1,7 +1,7 @@
 <template lang="pug">
 div
   div(class="bg-tf-white rounded-xl square overflow-hidden")
-    img(src="/img/sample_diamond.jpg")
+    img(src="/img/catalog/round.png")
   div(class="p-3 text-sm")
     div Бриллиант
     div.text-base.py-2 огранка Круглая
