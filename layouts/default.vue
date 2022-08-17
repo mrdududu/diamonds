@@ -22,7 +22,7 @@ div
             li Мобильность
     div(class="grid grid-cols-1 md:grid-cols-5 gap-y-8 md:gap-x-10 px-10 lg:px-0")
       UikitTfButton(to="/") Главная
-      UikitTfButton(to="/#best") Лучшее
+      UikitTfButton(@click="scrollToBest") Лучшее
       UikitTfButton(to="/catalog") Каталог
       UikitTfButton(@click="scrollToAbout") О компании
       UikitTfButtonAccent(@click="showConsultationForm") Консультация
@@ -31,7 +31,7 @@ div
     div
       slot
     div.py-16
-      div(class="px-4 md:px-0")
+      div(class="px-4 md:px-0" ref="refBest")
         h2 Лучшее
       div(class="mt-8")
         ClientOnly
@@ -60,6 +60,7 @@ div
 </template>
 <script setup>
 const refAbout = ref(null);
+const refBest = ref(null);
 
 const topItems = Array.from(Array(10), (_, i) => ({
   dia_id: '65797074' + i,
@@ -88,5 +89,9 @@ const closeConsultationForm = () => {
 
 const scrollToAbout = () => {
   refAbout.value.scrollIntoView({ behavior: 'smooth' });
+};
+
+const scrollToBest = () => {
+  refBest.value.scrollIntoView({ behavior: 'smooth' });
 };
 </script>
