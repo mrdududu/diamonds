@@ -30,11 +30,12 @@ div
       img(src="/img/arrow_down.svg")
     div
       slot
-    div
-      div
+    div.py-16
+      div(class="px-4 md:px-0")
         h2 Лучшее
-      div
-        BestProductCard(:item="topItem")
+      div(class="mt-8")
+        ClientOnly
+          BestSwiper(:items="topItems")
     div
       img(src="/img/photos/diamonds.jpg" class="block w-full")
     div(class="px-14")
@@ -60,18 +61,18 @@ div
 <script setup>
 const refAbout = ref(null);
 
-const topItem = {
-  dia_id: '65797074',
+const topItems = Array.from(Array(10), (_, i) => ({
+  dia_id: '65797074' + i,
   dia_shape: 'R57',
   dia_color: '81',
   dia_clarity: '02 A',
   dia_color_int: 'K',
   dia_clarity_int: 'IF',
-  dia_carat: '4.01',
+  dia_carat: 4.01 + i,
   dia_price_tink: ' 7,542,810',
   createdAt: '2022-07-27T09:12:58.777Z',
   updatedAt: '2022-07-27T09:12:58.776Z',
-};
+}));
 
 const state = reactive({
   ConsultationFormVisible: false,
