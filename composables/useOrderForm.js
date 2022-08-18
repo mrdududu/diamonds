@@ -1,4 +1,4 @@
-import { reactive } from 'vue';
+import { reactive, toRefs } from 'vue';
 
 const state = reactive({ selectedDiamond: null });
 export const useOrderForm = () => {
@@ -10,5 +10,5 @@ export const useOrderForm = () => {
     state.selectedDiamond = null;
   };
 
-  return { state, show, hide };
+  return { ...toRefs(state), show, hide };
 };

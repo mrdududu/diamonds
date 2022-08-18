@@ -1,7 +1,9 @@
 <template lang="pug">
 div
-  div(class="bg-tf-white rounded-xl square overflow-hidden")
-    img(src="/img/catalog/round.png")
+  div
+    div(class="pt-8 px-8")
+      img(src="/img/catalog/round.png")
+    CatalogHighProfit(class="p-3" :percent="63" text="Высокая динамика доходности")
   div(class="p-3 text-sm")
     div Бриллиант
     div.text-base.py-2 огранка Круглая

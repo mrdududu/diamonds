@@ -37,8 +37,8 @@ div
         ClientOnly
           BestSwiper(:items="topItems")
     div
-      img(src="/img/photos/diamonds.jpg" class="block w-full")
-    div(class="px-14")
+      img(src="/img/photos/about_miuz.jpg" class="block w-full")
+    div(class="px-14  lg:px-0")
       div(class="py-16" ref="refAbout")
         h2 О компании
         div(class="mt-8 text-xl space-y-5")
@@ -55,7 +55,7 @@ div
               UikitTfButtonAccent(to="/catalog") Каталог
   ClientOnly
     UikitTransitionScale
-      CatalogOrderForm(v-if="orderFormState.selectedDiamond" :item="orderFormState.selectedDiamond" @closeClick="hideOrderForm")
+      CatalogOrderForm(v-if="selectedDiamond" :item="selectedDiamond" @closeClick="hideOrderForm")
   ClientOnly
     UikitTransitionSlide
       CatalogConsultationForm(v-if="visibleConsultationForm" @closeClick="hideConsultationForm")
@@ -65,7 +65,7 @@ div
 const refAbout = ref(null);
 const refBest = ref(null);
 
-const { state: orderFormState, hide: hideOrderForm } = useOrderForm();
+const { selectedDiamond, hide: hideOrderForm } = useOrderForm();
 const {
   visible: visibleConsultationForm,
   hide: hideConsultationForm,
