@@ -37,10 +37,10 @@ div
     DiamondsguideShape(v-if="'shape' === selectedTab")
     DiamondsguideSize(v-if="'size' === selectedTab")
 </template>
-<script setup>
+<script setup lang="ts">
 const { show: showConsultationForm } = useConsultationForm();
 
-const state = reactive({
+const state = reactive<{ tabs: UikitTypeITabMenuItem[] }>({
   tabs: [
     { key: 'colors', text: 'Цвет', selected: true },
     { key: 'clarity', text: 'Чистота' },
@@ -49,9 +49,11 @@ const state = reactive({
   ],
 });
 
-const selectedTab = computed(() => state.tabs.find((tab) => tab.selected)?.key);
+const selectedTab = computed<string>(
+  () => state.tabs.find((tab) => tab.selected)?.key
+);
 
-const tabClick = (tab) => {
+const tabClick = (tab: UikitTypeITabMenuItem) => {
   state.tabs = state.tabs.map((item) => ({
     ...item,
     selected: item.key === tab.key,
