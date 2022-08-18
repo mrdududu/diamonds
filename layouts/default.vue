@@ -55,7 +55,7 @@ div
               UikitTfButtonAccent(to="/catalog") Каталог
   ClientOnly
     UikitTransitionScale
-      CatalogOrderForm(v-if="orderFormState.selectedDiamond" :item="orderFormState.selectedDiamond" @closeClick="hideOrderForm")
+      CatalogOrderForm(v-if="selectedDiamond" :item="selectedDiamond" @closeClick="hideOrderForm")
   ClientOnly
     UikitTransitionSlide
       CatalogConsultationForm(v-if="visibleConsultationForm" @closeClick="hideConsultationForm")
@@ -65,7 +65,7 @@ div
 const refAbout = ref(null);
 const refBest = ref(null);
 
-const { state: orderFormState, hide: hideOrderForm } = useOrderForm();
+const { selectedDiamond, hide: hideOrderForm } = useOrderForm();
 const {
   visible: visibleConsultationForm,
   hide: hideConsultationForm,
