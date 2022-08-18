@@ -37,8 +37,8 @@ div
         ClientOnly
           BestSwiper(:items="topItems")
     div
-      img(src="/img/photos/diamonds.jpg" class="block w-full")
-    div(class="px-14")
+      img(src="/img/photos/about_miuz.jpg" class="block w-full")
+    div(class="px-14  lg:px-0")
       div(class="py-16" ref="refAbout")
         h2 О компании
         div(class="mt-8 text-xl space-y-5")
