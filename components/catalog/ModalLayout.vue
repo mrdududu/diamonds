@@ -5,11 +5,10 @@ div(class="fixed inset-0 bg-tf-gray-dark md:bg-black md:bg-opacity-20 overflow-y
       img.cursor-pointer(src="/img/icons/x.svg" @click="emit('closeClick')")
     slot
 </template>
-<script setup>
-const props = defineProps({
-  showClose: Boolean,
-  class: Object,
-});
+<script setup lang="ts">
+const props = defineProps<{ showClose: boolean; class: any }>();
 
-const emit = defineEmits(['closeClick']);
+const emit = defineEmits<{
+  (e: 'closeClick'): void;
+}>();
 </script>

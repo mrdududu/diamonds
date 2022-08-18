@@ -15,6 +15,8 @@ div
       | Нажимая на кнопку “Оформить заявку”, вы даете
       | согласие на обработку #[a(href="/somelink") персональных данных]
 </template>
-<script setup>
-const emit = defineEmits(['sendRequestClick']);
+<script setup lang="ts">
+const emit = defineEmits<{
+  (e: 'sendRequestClick'): void;
+}>();
 </script>

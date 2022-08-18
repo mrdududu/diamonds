@@ -1,6 +1,6 @@
 import { ref } from 'vue';
 
-const visible = ref(false);
+const visible = ref<boolean>(false);
 export const useConsultationForm = () => {
   const show = () => {
     visible.value = true;

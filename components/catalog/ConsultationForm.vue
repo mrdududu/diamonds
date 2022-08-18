@@ -20,10 +20,21 @@ CatalogModalLayout(:showClose="true" @closeClick="emit('closeClick')" class="lg:
       h2 Ваша заявка оформлена
     div.text-sm Вскоре мы свяжемся с Вами #[br] и уточним все детали.
 </template>
-<script setup>
+<script setup lang="ts">
+interface IState {
+  form: {
+    name: string;
+    surname: string;
+    budget: string;
+    phone: string;
+    email: string;
+  };
+  complete: boolean;
+}
+
 const emit = defineEmits(['closeClick']);
 
-const state = reactive({
+const state = reactive<IState>({
   form: {
     name: '',
     surname: '',

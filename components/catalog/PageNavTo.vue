@@ -26,13 +26,13 @@ div(v-if="show" class="text-sm flex flex-row items-center")
     NuxtLink.nav-item(:to="getUrl(pageIndex + 1)")
       img(src="/img/icons/arrow_right.svg")
 </template>
-<script setup>
-const props = defineProps({
-  totalPages: Number,
-  pageIndex: Number,
-  indent: Number,
-  baseUrl: String,
-});
+<script setup lang="ts">
+const props = defineProps<{
+  totalPages: number;
+  pageIndex: number;
+  indent: number;
+  baseUrl: string;
+}>();
 
 const show = computed(() => props.totalPages > 1);
 
@@ -82,6 +82,6 @@ const pages = computed(() => {
   return res;
 });
 
-const getUrl = (pageIndex) =>
+const getUrl = (pageIndex: number) =>
   pageIndex ? `${props.baseUrl}/${pageIndex + 1}` : props.baseUrl;
 </script>
