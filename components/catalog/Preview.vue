@@ -12,7 +12,7 @@
 div(class="relative preview rounded-tl-xl rounded-tr-xl" :class="{'rounded-br-xl': !state.mouseover, 'rounded-bl-xl': !state.mouseover}" @mouseover="state.mouseover = true" @mouseleave="state.mouseover = false")
   CatalogDiamondItem(:item="item")
   UikitTransitionSlide
-    div(v-if="state.mouseover" class="absolute bg-tf-gray-dark rounded-br-xl rounded-bl-xl px-6 pb-5 left-0 right-0 overflow-hidden")
+    div(v-if="state.mouseover" class="absolute rounded-br-xl rounded-bl-xl px-6 pb-5 left-0 right-0 overflow-hidden")
       UikitTfButtonAccent Оставить заявку
 </template>
 <script setup>
