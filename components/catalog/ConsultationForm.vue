@@ -45,7 +45,14 @@ const state = reactive<IState>({
   complete: false,
 });
 
-const sendRequestClick = () => {
+const sendRequestClick = async () => {
+  const body: any = {
+    type: 'consultation',
+    data: { ...state.form },
+  };
+
+  const { data } = await useFetch('/api/sendform', { method: 'POST', body });
+
   console.log('sendRequestClick');
   state.complete = true;
 };
