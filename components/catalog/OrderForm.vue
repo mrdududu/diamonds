@@ -53,7 +53,14 @@ const state = reactive({
 //   createdAt: '2022-07-27T09:12:58.777Z',
 //   updatedAt: '2022-07-27T09:12:58.776Z',
 // });
-const sendRequestClick = () => {
+const sendRequestClick = async () => {
+  const body = {
+    type: 'order',
+    data: { ...state.form, item: props.item },
+  };
+
+  const { data } = await useFetch('/api/sendform', { method: 'POST', body });
+
   console.log('sendRequestClick');
   state.complete = true;
 };
