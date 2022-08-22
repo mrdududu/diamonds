@@ -26,18 +26,20 @@ interface IFormData {
   data: IOrderFormData | IConsultationFormData;
 }
 
+const config = useRuntimeConfig();
+
 const transporter = nodemailer.createTransport({
-  host: 'smtp.office365.com',
-  port: 587,
+  host: config.smtpHost,
+  port: Number(config.smtpPort),
   secure: false, // upgrade later with STARTTLS
   auth: {
-    user: 'orders@miuz.ru',
-    pass: '4hNzU9TeJE',
+    user: config.smtpUser,
+    pass: config.smtpPass,
   },
 });
 
-const from = 'orders@miuz.ru';
-const to = 'sem@ishinov.com, ectoplazm@gmail.com';
+const from = config.mailFrom;
+const to = config.mailTo;
 
 const sendEmail = (formData: IFormData) => {
   let subject = 'Tinkoff, MIUZ Diamonds';

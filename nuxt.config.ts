@@ -4,6 +4,12 @@ import { defineNuxtConfig } from 'nuxt';
 export default defineNuxtConfig({
   // https://v3.nuxtjs.org/guide/features/runtime-config
   runtimeConfig: {
+    smtpHost: '',
+    smtpPort: '',
+    smtpUser: '',
+    smtpPass: '',
+    mailFrom: '',
+    mailTo: '',
     public: {
       apiHost: 'https://bbavbtoga8rvputnh66l.containers.yandexcloud.net',
     },
