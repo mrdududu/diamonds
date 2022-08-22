@@ -41,17 +41,16 @@ const to = 'sem@ishinov.com, ectoplazm@gmail.com';
 
 const sendEmail = (formData: IFormData) => {
   let subject = 'Tinkoff, MIUZ Diamonds';
-  let text = '';
+  let text = `Данные заявки:\n`;
+  text += `Имя:  ${formData.data.name}\n`;
+  text += `Фамилия:  ${formData.data.surname}\n`;
+  text += `Телефон: ${formData.data.phone}\n`;
+  text += `e-Mail:  ${formData.data.email}\n`;
 
   if (formData.type === FormType.consultation) {
     subject += ` заявка на консультацию`;
 
     const data = formData.data as IConsultationFormData;
-    text += `Данные заявки:\n`;
-    text += `Имя:  ${data.name}\n`;
-    text += `Фамилия:  ${data.surname}\n`;
-    text += `Телефон: ${data.phone}\n`;
-    text += `e-Mail:  ${data.email}\n`;
     text += `Бюджет:  ${data.budget}\n`;
   }
 
@@ -59,11 +58,6 @@ const sendEmail = (formData: IFormData) => {
     subject += ` заявка на приобретение`;
 
     const data = formData.data as IOrderFormData;
-    text += `Данные заявки:\n`;
-    text += `Имя:  ${data.name}\n`;
-    text += `Фамилия:  ${data.surname}\n`;
-    text += `Телефон: ${data.phone}\n`;
-    text += `e-Mail:  ${data.email}\n`;
     text += `Бриллиант:  \n${JSON.stringify(data.item, null, 2)}\n`;
   }
 
