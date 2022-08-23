@@ -12,7 +12,7 @@ CatalogModalLayout(:showClose="true" @closeClick="emit('closeClick')")
       div.mb-10
         UikitTfTextField(name="surname" placeholder="Ваша фамилия" v-model="state.form.surname")
       div.mb-10
-        UikitTfTextField(name="phone" placeholder="* Телефон" v-model="state.form.phone")
+        UikitTfTextField(name="phone" placeholder="* Телефон" v-model="state.form.phone" maska="+7 (###) ###-##-##")
       div.mb-10
         UikitTfTextField(name="email" placeholder="* Email" v-model="state.form.email")
       CatalogSendRequest(class="grid grid-cols-1 lg:grid-cols-3 lg:gap-x-8 gap-y-6" @sendRequestClick="sendRequestClick")

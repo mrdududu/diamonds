@@ -11,7 +11,7 @@ CatalogModalLayout(:showClose="true" @closeClick="emit('closeClick')" class="lg:
     div.mb-10
       UikitTfTextField(name="budget" placeholder="Размер бюджета для инвестиций" v-model="state.form.budget")
     div.mb-10
-      UikitTfTextField(name="phone" placeholder="* Телефон" v-model="state.form.phone")
+      UikitTfTextField(name="phone" placeholder="* Телефон" v-model="state.form.phone" maska="+7 (###) ###-##-##")
     div.mb-10
       UikitTfTextField(name="email" placeholder="* Email" v-model="state.form.email")
     CatalogSendRequest(class="grid grid-cols-1 md:grid-cols-3 md:gap-x-8 gap-y-6" @sendRequestClick="sendRequestClick")
