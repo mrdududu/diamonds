@@ -21,6 +21,9 @@ CatalogModalLayout(:showClose="true" @closeClick="emit('closeClick')" class="lg:
     div.text-sm Вскоре мы свяжемся с Вами #[br] и уточним все детали.
 </template>
 <script setup lang="ts">
+import useVuelidate from '@vuelidate/core';
+import { required, email } from '@vuelidate/validators';
+
 interface IState {
   form: {
     name: string;
@@ -44,6 +47,17 @@ const state = reactive<IState>({
   },
   complete: false,
 });
+
+const rules = {
+  form: {
+    name: { required },
+    surname: { required },
+    phone: { required },
+    email: { required, email },
+  },
+};
+
+const v$ = useVuelidate<IState>(rules, state);
 
 const sendRequestClick = async () => {
   const body: any = {
