@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     mailFrom: '',
     mailTo: '',
     public: {
-      apiHost: 'https://bbavbtoga8rvputnh66l.containers.yandexcloud.net',
+      apiHost: '',
     },
   },
   build: {
