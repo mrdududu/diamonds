@@ -60,6 +60,9 @@ const rules = {
 const v$ = useVuelidate<IState>(rules, state);
 
 const sendRequestClick = async () => {
+  const isFormCorrect = await v$.value.$validate();
+  if (!isFormCorrect) return;
+
   const body: any = {
     type: 'consultation',
     data: { ...state.form },

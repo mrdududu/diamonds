@@ -42,6 +42,11 @@ const from = config.mailFrom;
 const to = config.mailTo;
 
 const sendEmail = (formData: IFormData) => {
+  if (!formData.data.name) throw new Error('Missing formData.data.name');
+  if (!formData.data.surname) throw new Error('Missing formData.data.surname');
+  if (!formData.data.phone) throw new Error('Missing formData.data.phone');
+  if (!formData.data.email) throw new Error('Missing formData.data.email');
+
   let subject = 'Tinkoff, MIUZ Diamonds';
   let text = `Данные заявки:\n`;
   text += `Имя:  ${formData.data.name}\n`;
@@ -60,6 +65,9 @@ const sendEmail = (formData: IFormData) => {
     subject += ` заявка на приобретение`;
 
     const data = formData.data as IOrderFormData;
+
+    if (!data.item) throw new Error('Missing formData.data.item');
+
     text += `Бриллиант:  \n${JSON.stringify(data.item, null, 2)}\n`;
   }
 
@@ -75,7 +83,7 @@ const sendEmail = (formData: IFormData) => {
 export default defineEventHandler(async (event) => {
   const formData = (await useBody(event)) as IFormData;
 
-  console.log(formData);
+  // console.log(formData);
 
   switch (formData.type) {
     case FormType.order:
