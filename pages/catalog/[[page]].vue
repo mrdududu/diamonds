@@ -43,7 +43,7 @@ const {
 // const { data: diamonds, pending, refresh, error } = useLazyFetch(() => url());
 // if (refCatalog.value) refCatalog.value.scrollIntoView({ behavior: 'smooth' });
 
-console.log({ diamonds, pending, refresh, error });
+// console.log({ diamonds, pending, refresh, error });
 
 watch(diamonds, (val) => {
   if (val && refCatalog.value)

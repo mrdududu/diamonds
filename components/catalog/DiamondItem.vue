@@ -14,8 +14,6 @@ div
     div Тип огранки: A
     div Цена: {{item.dia_price_tink}} руб
 </template>
-<script setup>
-const props = defineProps({
-  item: Object,
-});
+<script setup lang="ts">
+const props = defineProps<{ item: any }>();
 </script>
