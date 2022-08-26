@@ -1,4 +1,6 @@
 export default defineNuxtPlugin(() => {
+  const runtimeConfig = useRuntimeConfig();
+
   return {
     provide: {
       getError: (field: any): string | null => {
@@ -15,6 +17,9 @@ export default defineNuxtPlugin(() => {
 
         return null;
       },
+
+      getPhotoUrl: (item: any) =>
+        `${runtimeConfig.public.apiHost}${item.dia_photo.data.attributes.url}`,
     },
   };
 });

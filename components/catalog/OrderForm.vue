@@ -55,18 +55,6 @@ const rules = {
 
 const v$ = useVuelidate(rules, state);
 
-// const item = ref({
-//   dia_id: '65797074',
-//   dia_shape: 'R57',
-//   dia_color: '81',
-//   dia_clarity: '02 A',
-//   dia_color_int: 'K',
-//   dia_clarity_int: 'IF',
-//   dia_carat: '4.01',
-//   dia_price_tink: ' 7,542,810',
-//   createdAt: '2022-07-27T09:12:58.777Z',
-//   updatedAt: '2022-07-27T09:12:58.776Z',
-// });
 const sendRequestClick = async () => {
   const isFormCorrect = await v$.value.$validate();
   if (!isFormCorrect) return;

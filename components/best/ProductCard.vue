@@ -6,17 +6,17 @@
 <template lang="pug">
 div(class="md:max-w-xl grid grid-cols-2 gap-x-5 md:gap-x-10 py-4 md:py-12 px-6 md:px-20 md:rounded-xl product_card")
   div
-    div
-      img(src="/img/catalog/round.png")
-    CatalogHighProfit(percent="63" text="Высокая динамика доходности")    
+    div(class="mb-3")
+      img(:src="$getPhotoUrl(item)")
+    CatalogHighProfit(v-if="item.dia_profit" :percent="item.dia_profit" text="Высокая динамика доходности")
   div(class="text-sm")
     div Бриллиант
-    div.text-base.py-2 огранка Круглая
+    div.text-base.py-2 огранка {{item.dia_shape}}
     div Вес: {{item.dia_carat}} карата
-    div Граней: 57
+    div Граней: {{item.dia_edges}}
     div Цвет: {{item.dia_color}}
-    div Чистота: 8
-    div Тип огранки: A
+    div Чистота: {{item.dia_clarity}}
+    div Тип огранки: {{item.dia_cut_type}}
     div Цена: {{item.dia_price_tink}} руб
     div(class="mt-6")
       UikitTfButtonAccent(@click="showOrderForm(item)") Оставить заявку

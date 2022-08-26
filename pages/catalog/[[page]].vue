@@ -30,6 +30,7 @@ const url = () =>
   runtimeConfig.public.apiHost +
   '/api/diamonds/?' +
   new URLSearchParams({
+    populate: '*',
     'pagination[page]': pIndex.value + 1,
   });
 
