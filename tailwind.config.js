@@ -17,6 +17,7 @@ module.exports = {
         lg: '1.25rem',
         xl: '1.5rem',
         '2xl': '1.75rem',
+        '3xl': '2.25rem',
       },
       colors: {
         'tf-black': '#202020',
