@@ -14,6 +14,8 @@ module.exports = {
       },
       fontSize: {
         xs: '.75rem',
+        lg: '1.25rem',
+        '2xl': '1.75rem',
       },
       colors: {
         'tf-black': '#202020',
