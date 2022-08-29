@@ -52,7 +52,7 @@ div
           div(class="mb-14 text-3xl") MIUZ diamonds - официальный партнер Тинькофф, #[br] один из мировых лидеров в ювелирной отрасли
           div(class="grid grid-cols-1 md:grid-cols-3")
             div
-              UikitTfButtonAccent(to="/catalog") Каталог
+              UikitTfButtonAccent(to="/catalog" @click="clickCatalogBtn") Каталог
   ClientOnly
     UikitTransitionScale
       CatalogOrderForm(v-if="selectedDiamond" :item="selectedDiamond" @closeClick="hideOrderForm")
@@ -96,5 +96,9 @@ const scrollToAbout = () => {
 
 const scrollToBest = () => {
   refBest.value.scrollIntoView({ behavior: 'smooth' });
+};
+
+const clickCatalogBtn = () => {
+  document.getElementById('refCatalog').scrollIntoView({ behavior: 'smooth' });
 };
 </script>
