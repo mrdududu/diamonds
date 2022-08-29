@@ -15,7 +15,7 @@ div
         h3(class="fs36") ДИНАМИКА ДОХОДНОСТИ
       div(class="text-center mb-10") Сравнительная динамика цен на бриллианты с 2005 по 2021 гг
       div(class="flex justify-center mb-10")
-        img(src="/img/profit.png")
+        img(src="/img/profit.png" width="349")
       div(class="mb-10")
         p
           |#[span(class="text-tf-yellow") Бриллианты - инвестиции с высоким ростом стоимости] в долгосрочной перспективе.
