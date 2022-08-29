@@ -2,6 +2,9 @@
 .container {
   background: url(/img/bg_miuz_header.svg) top right no-repeat;
 }
+.best-items {
+  background: url(/img/bg_best_slider.svg) center center no-repeat;
+}
 </style>
 <template lang="pug">
 div
@@ -36,7 +39,7 @@ div
     div
       slot
     ClientOnly
-      div.py-16(v-if="!pendingTopItems")
+      div.py-16(v-if="!pendingTopItems" class="best-items")
         div(class="px-4 md:px-0" ref="refBest")
           h2 Лучшее
         div(class="mt-8")
