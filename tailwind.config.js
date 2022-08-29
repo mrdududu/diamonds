@@ -13,7 +13,7 @@ module.exports = {
         tinkoff: ['Tinkoff Sans', 'sans-serif'],
       },
       fontSize: {
-        xs: '.75rem',
+        xs: '14px',
         lg: '1.25rem',
         xl: '1.5rem',
         '2xl': '1.75rem',
