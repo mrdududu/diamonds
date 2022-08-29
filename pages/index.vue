@@ -2,13 +2,17 @@
 p {
   @apply mb-6;
 }
+.fs36 {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
 </style>
 <template lang="pug">
 div
   div(class="md:grid md:grid-cols-6 mx-10 md:mx-0")
     div(class="md:col-start-2 md:col-span-4")
       div(class="text-center mb-2")
-        h3 ДИНАМИКА ДОХОДНОСТИ
+        h3(class="fs36") ДИНАМИКА ДОХОДНОСТИ
       div(class="text-center mb-10") Сравнительная динамика цен на бриллианты с 2005 по 2021 гг
       div(class="flex justify-center mb-10")
         img(src="/img/profit.svg")
