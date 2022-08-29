@@ -15,9 +15,5 @@ div
     div Цена: {{item.dia_price_tink}} руб
 </template>
 <script setup lang="ts">
-// const runtimeConfig = useRuntimeConfig();
 const props = defineProps<{ item: any }>();
-
-// const getPhotoUrl = (item: any) =>
-//   `${runtimeConfig.public.apiHost}${item.dia_photo.data.attributes.url}`;
 </script>
