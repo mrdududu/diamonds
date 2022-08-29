@@ -49,7 +49,7 @@ div
         div(class="flex justify-center md:block")
           img(src="/img/miuz_logo.svg")
         div(class="md:col-span-2 pt-9")
-          div(class="mb-14 text-3xl") MIUZ diamonds - официальный партнер Тинькофф, #[br] один из мировых лидеров в ювелирной отрасли
+          div(class="mb-14 text-[32px]") MIUZ diamonds - официальный партнер Тинькофф, #[br] один из мировых лидеров в ювелирной отрасли
           div(class="grid grid-cols-1 md:grid-cols-3")
             div
               UikitTfButtonAccent(to="/catalog" @click="clickCatalogBtn") Каталог
