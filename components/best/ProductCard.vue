@@ -1,6 +1,8 @@
 <style scoped>
 .product_card {
-  background: linear-gradient(253.46deg, #313131 0%, #1e1e1e 100%);
+  background: url(/img/bg_best_card.svg) center right no-repeat,
+    linear-gradient(253.46deg, #313131 0%, #1e1e1e 100%);
+  background-size: auto 100%;
 }
 </style>
 <template lang="pug">

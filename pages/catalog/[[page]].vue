@@ -1,5 +1,5 @@
 <template lang="pug">
-div(class="mx-4 lg:mx-0" ref="refCatalog")
+div(class="mx-4 lg:mx-0" ref="refCatalog" id="refCatalog")
   div.mb-8
     h2 Каталог
   UikitTransitionScale(direction="left")
@@ -7,7 +7,6 @@ div(class="mx-4 lg:mx-0" ref="refCatalog")
       CatalogPreview(v-for="item in diamonds.data" :key="item.id" :item="item.attributes" @click="showOrderForm(item.attributes)" class="cursor-pointer")
   div(v-if="!pending" class="my-16 flex justify-center")
     CatalogPageNavTo(:totalPages="diamonds.meta.pagination.pageCount" :pageIndex="pIndex" :indent="1" baseUrl="/catalog")
-    //- CatalogPageNav(:totalPages="diamonds.meta.pagination.pageCount" :pageIndex="pIndex" :indent="1" @page-click="pageClick")
   ClientOnly
     Teleport(to="#teleport-popupform")
       CatalogLoader(v-if="pending")
@@ -15,7 +14,6 @@ div(class="mx-4 lg:mx-0" ref="refCatalog")
 <script setup>
 const refCatalog = ref(null);
 const route = useRoute();
-// const router = useRouter();
 const runtimeConfig = useRuntimeConfig();
 
 const { show: showOrderForm } = useOrderForm();
@@ -40,20 +38,9 @@ const {
   refresh,
   error,
 } = await useFetch(() => url(), { lazy: true });
-// const { data: diamonds, pending, refresh, error } = await useFetch(url());
-// const { data: diamonds, pending, refresh, error } = useLazyFetch(() => url());
-// if (refCatalog.value) refCatalog.value.scrollIntoView({ behavior: 'smooth' });
-
-// console.log({ diamonds, pending, refresh, error });
 
 watch(diamonds, (val) => {
   if (val && refCatalog.value)
     refCatalog.value.scrollIntoView({ behavior: 'smooth' });
 });
-
-// const pageClick = (pageIndex) => {
-//   console.log('pageClick', pageIndex);
-//   const url = pageIndex ? `/catalog/${pageIndex + 1}` : '/catalog';
-//   router.push(url);
-// };
 </script>
