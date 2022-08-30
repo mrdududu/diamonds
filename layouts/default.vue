@@ -61,6 +61,10 @@ div
           div(class="grid grid-cols-1 md:grid-cols-3")
             div
               UikitTfButtonAccent(to="/catalog" @click="clickCatalogBtn") Каталог
+  .fixed(class="bottom-6 right-6 md:bottom-20 md:right-20")
+    UikitTransitionFade
+      UikitTfFABBtn(v-if="showFABBtn" @click="clickFABBtn")
+        img(src="/img/icons/arrow_top.svg")
   ClientOnly
     UikitTransitionScale
       CatalogOrderForm(v-if="selectedDiamond" :item="selectedDiamond" @closeClick="hideOrderForm")
@@ -72,6 +76,7 @@ div
 <script setup>
 const refAbout = ref(null);
 const refBest = ref(null);
+const showFABBtn = ref(false);
 const runtimeConfig = useRuntimeConfig();
 
 const { selectedDiamond, hide: hideOrderForm } = useOrderForm();
@@ -98,6 +103,12 @@ const topItems = computed(() =>
   dataTopItems.value.data.map((item) => item.attributes)
 );
 
+onMounted(() => {
+  document.addEventListener('scroll', (e) => {
+    showFABBtn.value = window.scrollY > 100;
+  });
+});
+
 const scrollToAbout = () => {
   refAbout.value.scrollIntoView({ behavior: 'smooth' });
 };
@@ -108,5 +119,9 @@ const scrollToBest = () => {
 
 const clickCatalogBtn = () => {
   document.getElementById('refCatalog').scrollIntoView({ behavior: 'smooth' });
+};
+
+const clickFABBtn = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 </script>
