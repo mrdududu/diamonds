@@ -52,7 +52,7 @@ const sendEmail = (formData: IFormData) => {
   text += `Имя:  ${formData.data.name}\n`;
   text += `Фамилия:  ${formData.data.surname}\n`;
   text += `Телефон: ${formData.data.phone}\n`;
-  text += `e-Mail:  ${formData.data.email}\n`;
+  text += `e-Mail:  ${formData.data.email}\n\n\n`;
 
   if (formData.type === FormType.consultation) {
     subject += ` заявка на консультацию`;
@@ -68,7 +68,15 @@ const sendEmail = (formData: IFormData) => {
 
     if (!data.item) throw new Error('Missing formData.data.item');
 
-    text += `Бриллиант:  \n${JSON.stringify(data.item, null, 2)}\n`;
+    text += `Бриллиант:  \n\n`;
+    text += `ID:  ${data.item.dia_id}\n`;
+    text += `Стоимость для клиента Tinkoff:   ${data.item.dia_price_tink}   руб. с НДС\n\n`;
+    text += `Огранка:  ${data.item.dia_cut}\n`;
+    text += `Цвет: ${data.item.dia_color} \n`;
+    text += `Чистота: ${data.item.dia_clarity_type}\n`;
+    text += `Цвет по международным стандартам: ${data.item.dia_color_int}\n`;
+    text += `Чистота по международным стандартам: ${data.item.dia_clarity_int}\n`;
+    text += `Вес карат: ${data.item.dia_carat}\n`;
   }
 
   transporter.sendMail({
