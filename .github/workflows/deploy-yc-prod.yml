@@ -1,0 +1,22 @@
+name: Deploy Production to Yandex Serverless Containers
+
+on:
+  push:
+    branches: ['master']
+  pull_request:
+    branches: ['master']
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Login to Yandex Cloud Container Registry
+        uses: yc-actions/yc-cr-login@v1
+        with:
+          yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_CREDENTIALS_PROD }}
+      - name: Build the Docker image
+        run: docker build --progress=plain --no-cache --tag cr.yandex/crpp8j89a8odfe3k5s6c/tf-diamonds-prod:${{ github.sha }} .
+      - name: Docker Push
+        run: docker push cr.yandex/crpp8j89a8odfe3k5s6c/tf-diamonds-prod:${{ github.sha }}
