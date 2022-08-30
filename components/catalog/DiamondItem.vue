@@ -1,18 +1,19 @@
 <template lang="pug">
 div
-  div(class="bg-tf-white rounded-xl square")
+  div
+    div(class="pt-8 px-3")
+      img(:src="$getPhotoUrl(item)")
+    CatalogHighProfit(v-if="item.dia_profit" class="p-3" :percent="item.dia_profit" text="Высокая динамика доходности")
   div(class="p-3 text-sm")
     div Бриллиант
-    div.text-base.py-2 огранка Круглая
+    div.text-base.py-2 огранка {{item.dia_shape}}
     div Вес: {{item.dia_carat}} карата
-    div Граней: 57
+    div Граней: {{item.dia_edges}}
     div Цвет: {{item.dia_color}}
-    div Чистота: 8
-    div Тип огранки: A
+    div Чистота: {{item.dia_clarity}}
+    div Тип огранки: {{item.dia_cut_type}}
     div Цена: {{item.dia_price_tink}} руб
 </template>
-<script setup>
-const props = defineProps({
-  item: Object,
-});
+<script setup lang="ts">
+const props = defineProps<{ item: any }>();
 </script>

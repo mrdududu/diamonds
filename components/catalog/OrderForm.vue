@@ -1,30 +1,33 @@
 <template lang="pug">
 CatalogModalLayout(:showClose="true" @closeClick="emit('closeClick')")
-  div(v-if="!state.complete" class="grid grid-cols-1 lg:grid-cols-3 lg:gap-x-16")
-    div
-      CatalogDiamondItem(:item="item")
-    div(class="lg:col-span-2")
+  div(v-if="!state.complete" class="md:grid md:grid-cols-3 md:gap-x-16")
+    div(class="pb-6 md:pb-0 border-b border-tf-yellow md:border-b-0")
+      CatalogDiamondItem(:item="item" class="grid grid-cols-2 gap-x-6 md:block max-w-sm")
+    div(class="md:col-span-2 pt-6 md:pt-0")
       div.mb-2
         h2 Оформите заявку на приобретение
       div.mb-10.text-sm Мы позвоним, чтобы уточнить детали. Будем сопровождать вас на всех этапах сделки.
       div.mb-10
-        UikitTfTextField(name="name" placeholder="Ваше имя" v-model="state.form.name")
+        UikitTfTextField(name="name" placeholder="Ваше имя" v-model="state.form.name" :error="$getError(v$.form.name)" @blur="v$.form.name.$touch")
       div.mb-10
-        UikitTfTextField(name="surname" placeholder="Ваша фамилия" v-model="state.form.surname")
+        UikitTfTextField(name="surname" placeholder="Ваша фамилия" v-model="state.form.surname" :error="$getError(v$.form.surname)" @blur="v$.form.surname.$touch")
       div.mb-10
-        UikitTfTextField(name="phone" placeholder="* Телефон" v-model="state.form.phone")
+        UikitTfTextField(name="phone" placeholder="Телефон" v-model="state.form.phone" maska="+7 (###) ###-##-##" :error="$getError(v$.form.phone)" @blur="v$.form.phone.$touch")
       div.mb-10
-        UikitTfTextField(name="email" placeholder="* Email" v-model="state.form.email")
-      CatalogSendRequest(class="grid grid-cols-1 lg:grid-cols-3 lg:gap-x-8" @sendRequestClick="sendRequestClick")
+        UikitTfTextField(name="email" placeholder="Email" v-model="state.form.email" :error="$getError(v$.form.email)" @blur="v$.form.email.$touch")
+      CatalogSendRequest(class="grid grid-cols-1 lg:grid-cols-3 lg:gap-x-8 gap-y-6" @sendRequestClick="sendRequestClick")
   div(v-else class="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-16")
-    div(class="border-r border-tf-yellow")
-      CatalogDiamondItem(:item="item" class="grid lg:grid-cols-2 lg:gap-x-6")
-    div(class="flex flex-col justify-center")
+    div(class="pb-6 lg:pb-0 border-b border-tf-yellow lg:border-b-0 lg:border-r")
+      CatalogDiamondItem(:item="item" class="grid grid-cols-2 gap-x-6 max-w-sm")
+    div(class="pt-6 lg:pt-0 flex flex-col justify-center")
       div.mb-2
         h2 Ваша заявка оформлена
       div.text-sm Вскоре мы свяжемся с Вами #[br] и уточним все детали.
 </template>
 <script setup>
+import useVuelidate from '@vuelidate/core';
+import { required, email } from '@vuelidate/validators';
+
 const props = defineProps({
   item: Object,
 });
@@ -41,19 +44,28 @@ const state = reactive({
   complete: false,
 });
 
-// const item = ref({
-//   dia_id: '65797074',
-//   dia_shape: 'R57',
-//   dia_color: '81',
-//   dia_clarity: '02 A',
-//   dia_color_int: 'K',
-//   dia_clarity_int: 'IF',
-//   dia_carat: '4.01',
-//   dia_price_tink: ' 7,542,810',
-//   createdAt: '2022-07-27T09:12:58.777Z',
-//   updatedAt: '2022-07-27T09:12:58.776Z',
-// });
-const sendRequestClick = () => {
+const rules = {
+  form: {
+    name: { required },
+    surname: { required },
+    phone: { required },
+    email: { required, email },
+  },
+};
+
+const v$ = useVuelidate(rules, state);
+
+const sendRequestClick = async () => {
+  const isFormCorrect = await v$.value.$validate();
+  if (!isFormCorrect) return;
+
+  const body = {
+    type: 'order',
+    data: { ...state.form, item: props.item },
+  };
+
+  const { data } = await useFetch('/api/sendform', { method: 'POST', body });
+
   console.log('sendRequestClick');
   state.complete = true;
 };

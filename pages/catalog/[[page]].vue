@@ -1,25 +1,22 @@
 <template lang="pug">
-div(class="")
+div(class="mx-4 lg:mx-0" ref="refCatalog" id="refCatalog")
   div.mb-8
     h2 Каталог
-  div(class="grid grid-cols-2 md:grid-cols-4 gap-12")
-    CatalogPreview.cursor-pointer(v-for="item in diamonds.data" :key="item.id" :item="item.attributes" @click="itemClick(item.attributes)")
-  div.my-16.flex.justify-center
+  UikitTransitionScale(direction="left")
+    div(v-if="!pending" class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-12 md:gap-y-20")
+      CatalogPreview(v-for="item in diamonds.data" :key="item.id" :item="item.attributes" @click="showOrderForm(item.attributes)" class="cursor-pointer")
+  div(v-if="!pending" class="my-16 flex justify-center")
     CatalogPageNavTo(:totalPages="diamonds.meta.pagination.pageCount" :pageIndex="pIndex" :indent="1" baseUrl="/catalog")
-    //- CatalogPageNav(:totalPages="diamonds.meta.pagination.pageCount" :pageIndex="pIndex" :indent="1" @page-click="pageClick")
-  Teleport(to="#teleport-popupform")
-    CatalogOrderForm(v-if="state.selectedDiamond" :item="state.selectedDiamond" @closeClick="closeClick")
-  Teleport(to="#teleport-popupform")
-    CatalogLoader(v-if="pending")
+  ClientOnly
+    Teleport(to="#teleport-popupform")
+      CatalogLoader(v-if="pending")
 </template>
 <script setup>
+const refCatalog = ref(null);
 const route = useRoute();
-// const router = useRouter();
 const runtimeConfig = useRuntimeConfig();
 
-const state = reactive({
-  selectedDiamond: null,
-});
+const { show: showOrderForm } = useOrderForm();
 
 const pIndex = computed(() => {
   let page = Number(route.params.page);
@@ -31,22 +28,19 @@ const url = () =>
   runtimeConfig.public.apiHost +
   '/api/diamonds/?' +
   new URLSearchParams({
+    populate: '*',
     'pagination[page]': pIndex.value + 1,
   });
 
-const { data: diamonds, pending, refresh, error } = await useFetch(() => url());
+const {
+  data: diamonds,
+  pending,
+  refresh,
+  error,
+} = await useFetch(() => url(), { lazy: true });
 
-const itemClick = (item) => {
-  state.selectedDiamond = item;
-};
-
-const closeClick = () => {
-  state.selectedDiamond = null;
-};
-
-// const pageClick = (pageIndex) => {
-//   console.log('pageClick', pageIndex);
-//   const url = pageIndex ? `/catalog/${pageIndex + 1}` : '/catalog';
-//   router.push(url);
-// };
+watch(diamonds, (val) => {
+  if (val && refCatalog.value)
+    refCatalog.value.scrollIntoView({ behavior: 'smooth' });
+});
 </script>
