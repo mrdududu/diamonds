@@ -9,10 +9,10 @@
 <template lang="pug">
 div
   .container(class="mx-auto max-w-screen-lg container")
-    div(class="md:grid md:grid-cols-6 mt-10 md:mt-36 md:mb-10")
+    div(class="md:grid md:grid-cols-6 mt-10 md:mt-36 md:mb-10 flex md:block flex-col items-center")
       NuxtLink(to="/" class="block md:col-start-2 md:col-span-2")
         img(src="/img/miuz_logo.svg")
-      div(class="md:col-span-2")
+      div(class="md:col-span-2 mt-20 md:mt-0")
         img(src="/img/tf_logo.svg" class="md:mt-11")
     div(class="md:grid md:grid-cols-6 mt-36 mb-10 mx-10 md:mx-0")
       div(class="md:col-start-2 md:col-span-4")
