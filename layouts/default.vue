@@ -61,6 +61,9 @@ div
           div(class="grid grid-cols-1 md:grid-cols-3")
             div
               UikitTfButtonAccent(to="/catalog" @click="clickCatalogBtn") Каталог
+  .fixed(class="bottom-20 right-20")
+    UikitTfFABBtn(@click="clickFABBtn")
+      img(src="/img/icons/arrow_top.svg")
   ClientOnly
     UikitTransitionScale
       CatalogOrderForm(v-if="selectedDiamond" :item="selectedDiamond" @closeClick="hideOrderForm")
@@ -108,5 +111,9 @@ const scrollToBest = () => {
 
 const clickCatalogBtn = () => {
   document.getElementById('refCatalog').scrollIntoView({ behavior: 'smooth' });
+};
+
+const clickFABBtn = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 </script>
