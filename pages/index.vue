@@ -34,10 +34,10 @@ div
   div(class="mx-4 lg:mx-0")
     UikitTfTabMenu(:tabs="state.tabs" @tabClick="tabClick")
   div(class="mx-10 lg:mx-0")
-    DiamondsguideColors(v-if="'colors' === selectedTab")
-    DiamondsguideClarity(v-if="'clarity' === selectedTab")
-    DiamondsguideShape(v-if="'shape' === selectedTab")
-    DiamondsguideSize(v-if="'size' === selectedTab")
+    DiamondsguideColors(v-show="'colors' === selectedTab")
+    DiamondsguideClarity(v-show="'clarity' === selectedTab")
+    DiamondsguideShape(v-show="'shape' === selectedTab")
+    DiamondsguideSize(v-show="'size' === selectedTab")
 </template>
 <script setup lang="ts">
 const { show: showConsultationForm } = useConsultationForm();
