@@ -3,6 +3,7 @@
   background: url(/img/bg_best_card.svg) center right no-repeat,
     linear-gradient(253.46deg, #313131 0%, #1e1e1e 100%);
   background-size: auto 100%;
+  filter: drop-shadow(0px 20px 40px rgba(0, 0, 0, 0.5));
 }
 </style>
 <template lang="pug">

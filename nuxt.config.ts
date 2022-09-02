@@ -30,4 +30,5 @@ export default defineNuxtConfig({
     },
   },
   css: ['~/assets/css/tailwind.css'],
+  modules: ['@vueuse/nuxt'],
 });
