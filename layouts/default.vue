@@ -44,7 +44,6 @@ div
           h2 Лучшее
         div(class="mt-8")
           BestSlider(:items="topItems")
-          //- BestSwiper(:items="topItems")
     div
       img(src="/img/photos/about_miuz.jpg" class="block w-full")
     div(class="px-14  lg:px-0")
