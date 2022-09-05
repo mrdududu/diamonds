@@ -62,7 +62,7 @@ div
           div(class="grid grid-cols-1 md:grid-cols-3")
             div
               UikitTfButtonAccent(to="/catalog" @click="clickCatalogBtn") Каталог
-  .fixed(class="bottom-6 right-6 md:bottom-20 md:right-20")
+  .fixed(class="bottom-6 right-6 md:bottom-20 md:right-20 z-10")
     UikitTransitionFade
       UikitTfFABBtn(v-if="showFABBtn" @click="clickFABBtn")
         img(src="/img/icons/arrow_top.svg")
