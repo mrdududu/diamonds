@@ -3,11 +3,16 @@
   background: url(/img/bg_best_card.svg) center right no-repeat,
     linear-gradient(253.46deg, #313131 0%, #1e1e1e 100%);
   background-size: auto 100%;
-  filter: drop-shadow(0px 20px 40px rgba(0, 0, 0, 0.5));
+}
+
+@media (min-width: 640px) {
+  .product_card {
+    filter: drop-shadow(0px 20px 40px rgba(0, 0, 0, 0.5));
+  }
 }
 </style>
 <template lang="pug">
-div(class="md:max-w-xl grid grid-cols-2 gap-x-5 md:gap-x-10 py-4 md:py-12 px-6 md:px-20 md:rounded-xl product_card")
+div(class="md:max-w-xl grid grid-cols-2 gap-x-5 md:gap-x-10 py-4 md:py-12 px-6 md:px-20 rounded-xl product_card")
   div
     div(class="mb-3")
       img(:src="$getPhotoUrl(item)")

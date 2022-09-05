@@ -43,7 +43,7 @@ div
         div(class="px-4 md:px-0" ref="refBest")
           h2 Лучшее
         div(class="mt-8")
-          BestMySlider(:items="topItems")
+          BestSlider(:items="topItems")
           //- BestSwiper(:items="topItems")
     div
       img(src="/img/photos/about_miuz.jpg" class="block w-full")
