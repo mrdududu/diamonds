@@ -43,7 +43,7 @@ div
         div(class="px-4 md:px-0" ref="refBest")
           h2 Лучшее
         div(class="mt-8")
-          BestSwiper(:items="topItems")
+          BestSlider(:items="topItems")
     div
       img(src="/img/photos/about_miuz.jpg" class="block w-full")
     div(class="px-14  lg:px-0")
@@ -61,7 +61,7 @@ div
           div(class="grid grid-cols-1 md:grid-cols-3")
             div
               UikitTfButtonAccent(to="/catalog" @click="clickCatalogBtn") Каталог
-  .fixed(class="bottom-6 right-6 md:bottom-20 md:right-20")
+  .fixed(class="bottom-6 right-6 md:bottom-20 md:right-20 z-10")
     UikitTransitionFade
       UikitTfFABBtn(v-if="showFABBtn" @click="clickFABBtn")
         img(src="/img/icons/arrow_top.svg")
