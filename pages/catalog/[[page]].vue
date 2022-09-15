@@ -14,22 +14,15 @@ div(class="mx-4 lg:mx-0" ref="refCatalog" id="refCatalog")
       CatalogLoader(v-if="pending")
 </template>
 <script setup>
+import sortDefault from '~/data/catalog/sorting.json';
+
 const refCatalog = ref(null);
 const route = useRoute();
 const runtimeConfig = useRuntimeConfig();
 
-const sort = reactive({
-  items: [
-    { key: 'dia_price_tink', text: 'По цене' },
-    { key: 'dia_carat', text: 'По весу' },
-    { key: 'dia_clarity', text: 'По чистоте' },
-  ],
-  order: 'desc',
-  key: null,
-});
+const sort = reactive(sortDefault);
 
 const sortChange = ({ key, order }) => {
-  console.log('sortChange', { key, order });
   sort.key = key;
   sort.order = order;
 };
