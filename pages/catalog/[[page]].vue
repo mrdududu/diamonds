@@ -2,7 +2,7 @@
 div(class="mx-4 lg:mx-0" ref="refCatalog" id="refCatalog")
   div.mb-8
     h2 Каталог
-  div()
+  div(class="flex justify-end")
     CatalogSort(:items="sort.items" :order="sort.order" :selectedKey="sort.key" @change="sortChange")
   UikitTransitionScale(direction="left")
     div(v-if="!pending" class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-12 md:gap-y-20")
