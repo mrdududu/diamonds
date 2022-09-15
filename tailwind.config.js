@@ -32,5 +32,17 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  // https://daisyui.com/theme-generator/
+  daisyui: {
+    themes: [
+      {
+        mytheme: {
+          accent: '#FFDD2D',
+          neutral: '#282828',
+          'base-100': '#202020',
+        },
+      },
+    ],
+  },
+  plugins: [require('daisyui')],
 };

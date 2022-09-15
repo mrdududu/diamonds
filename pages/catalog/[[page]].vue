@@ -2,6 +2,8 @@
 div(class="mx-4 lg:mx-0" ref="refCatalog" id="refCatalog")
   div.mb-8
     h2 Каталог
+  div(class="flex justify-end")
+    CatalogSort(:items="sort.items" :order="sort.order" :selectedKey="sort.key" @change="sortChange")
   UikitTransitionScale(direction="left")
     div(v-if="!pending" class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-12 md:gap-y-20")
       CatalogPreview(v-for="item in diamonds.data" :key="item.id" :item="item.attributes" @click="showOrderForm(item.attributes)" class="cursor-pointer")
@@ -16,6 +18,22 @@ const refCatalog = ref(null);
 const route = useRoute();
 const runtimeConfig = useRuntimeConfig();
 
+const sort = reactive({
+  items: [
+    { key: 'dia_price_tink', text: 'По цене' },
+    { key: 'dia_carat', text: 'По весу' },
+    { key: 'dia_clarity', text: 'По чистоте' },
+  ],
+  order: 'desc',
+  key: null,
+});
+
+const sortChange = ({ key, order }) => {
+  console.log('sortChange', { key, order });
+  sort.key = key;
+  sort.order = order;
+};
+
 const { show: showOrderForm } = useOrderForm();
 
 const pIndex = computed(() => {
@@ -24,13 +42,22 @@ const pIndex = computed(() => {
   return page - 1;
 });
 
-const url = () =>
-  runtimeConfig.public.apiHost +
-  '/api/diamonds/?' +
-  new URLSearchParams({
+const url = () => {
+  const urlParams = {
     populate: '*',
     'pagination[page]': pIndex.value + 1,
-  });
+  };
+
+  if (sort.key) {
+    urlParams['sort'] = `${sort.key}:${sort.order}`;
+  }
+
+  return (
+    runtimeConfig.public.apiHost +
+    '/api/diamonds/?' +
+    new URLSearchParams(urlParams)
+  );
+};
 
 const {
   data: diamonds,
