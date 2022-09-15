@@ -2,7 +2,8 @@
 div(class="mx-4 lg:mx-0" ref="refCatalog" id="refCatalog")
   div.mb-8
     h2 Каталог
-  div(class="flex justify-end")
+  div(class="flex justify-between")
+    CatalogFilter(:filter="filter" @change="filterChange")
     CatalogSort(:items="sort.items" :order="sort.order" :selectedKey="sort.key" @change="sortChange")
   UikitTransitionScale(direction="left")
     div(v-if="!pending" class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-12 md:gap-y-20")
@@ -19,6 +20,68 @@ import sortDefault from '~/data/catalog/sorting.json';
 const refCatalog = ref(null);
 const route = useRoute();
 const runtimeConfig = useRuntimeConfig();
+
+const filter = reactive({
+  settings: [
+    {
+      key: 'dia_carat',
+      name: 'Вес',
+      filter: {
+        type: 'range_array',
+        items: [
+          { min: 0.01, max: 0.5 },
+          { min: 0.51, max: 0.9 },
+          { min: 0.91, max: 4.0 },
+        ],
+      },
+      selectedIndex: 0,
+    },
+    {
+      key: 'dia_edges',
+      name: 'Грани',
+      filter: {
+        type: 'array',
+        items: [56, 57, 65],
+      },
+      selectedIndex: 0,
+    },
+    {
+      key: 'dia_color',
+      name: 'Цвет',
+      filter: {
+        type: 'range_array',
+        items: [
+          { min: 1, max: 3 },
+          { min: 4, max: 6 },
+          { min: 7, max: 9 },
+        ],
+      },
+      selectedIndex: 0,
+    },
+    {
+      key: 'dia_clarity',
+      name: 'Чистота',
+      filter: {
+        type: 'range_array',
+        items: [
+          { min: 1, max: 2 },
+          { min: 3, max: 4 },
+          { min: 5, max: 9 },
+        ],
+      },
+      selectedIndex: 0,
+    },
+  ],
+  selValues: [], // {key, val}
+});
+
+const filterChange = ({ key, val }) => {
+  console.log('filterChange', { key, val });
+  filter.selValues = [
+    ...filter.selValues.filter((item) => item.key != key),
+    { key, val },
+  ];
+};
 
 const sort = reactive(sortDefault);
 
