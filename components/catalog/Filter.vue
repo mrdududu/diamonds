@@ -2,7 +2,7 @@
 div(class="flex items-center")
   div Фильтровать:
   div(v-for="filterItem in props.filter.settings" class="flex items-center ml-6")
-    UikitTfDropDown(:unselectedText="filterItem.name" :items="filterToDropDownItems(filterItem.filter)" :selectedVal="getSelectedVal(filterItem.key)" @change="(val) => {onChangeFilterItem(filterItem, val)}")
+    CatalogFilterDropDown(:filterItem="filterItem" :selectedVal="getSelectedVal(filterItem.key)" @change="(val) => {onChangeFilterItem(filterItem, val)}")
 </template>
 <script setup>
 const refDropdownContent = ref(null);

@@ -34,7 +34,6 @@ const filter = reactive({
           { min: 0.91, max: 4.0 },
         ],
       },
-      selectedIndex: 0,
     },
     {
       key: 'dia_edges',
@@ -43,7 +42,6 @@ const filter = reactive({
         type: 'array',
         items: [56, 57, 65],
       },
-      selectedIndex: 0,
     },
     {
       key: 'dia_color',
@@ -56,7 +54,6 @@ const filter = reactive({
           { min: 7, max: 9 },
         ],
       },
-      selectedIndex: 0,
     },
     {
       key: 'dia_clarity',
@@ -69,7 +66,6 @@ const filter = reactive({
           { min: 5, max: 9 },
         ],
       },
-      selectedIndex: 0,
     },
   ],
   selValues: [], // {key, val}
