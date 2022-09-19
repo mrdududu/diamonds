@@ -1,13 +1,20 @@
 <template lang="pug">
 UikitTfDropDown(:placeholder="placeholder" :items="items" @change="onChange")
 </template>
-<script setup>
-const props = defineProps({
-  filterItem: Object,
-  selectedVal: Object,
-});
+<script setup lang="ts">
+import { Filter, FilterSettingItem, SelectedValue } from '~/types/Filter.d';
+import DropdownItem from '~/components/uikit/type/DropdownItem.d';
 
-const emit = defineEmits(['change']);
+interface Props {
+  filterItem: FilterSettingItem;
+  selectedVal: SelectedValue;
+}
+
+const props = defineProps<Props>();
+
+const emit = defineEmits<{
+  (e: 'change', filterItem: FilterSettingItem, item: DropdownItem): void;
+}>();
 
 // const label = computed(() => {
 //   return props.selectedVal
@@ -25,7 +32,7 @@ const emit = defineEmits(['change']);
 //   return [...props.items];
 // });
 
-const filterToDropDownItems = (filter) => {
+const filterToDropDownItems = (filter: Filter): DropdownItem[] => {
   switch (filter.type) {
     case 'range_array':
       return filter.items.map((item) => ({
@@ -46,8 +53,7 @@ const placeholder = computed(() => props.filterItem.name);
 
 const items = computed(() => filterToDropDownItems(props.filterItem.filter));
 
-// (val) => {onChangeFilterItem(filterItem, val)}
-const onChange = (item) => {
+const onChange = (item: DropdownItem) => {
   emit('change', props.filterItem, item);
 };
 </script>

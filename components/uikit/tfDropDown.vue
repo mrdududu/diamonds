@@ -5,17 +5,22 @@ div(class="dropdown")
     li(v-for="item in props.items" :key="item.key")
       a(@click="onChange(item)") {{item.text}}
 </template>
-<script setup>
-const props = defineProps({
-  placeholder: String,
-  items: Array, // {key, text, val}
-});
+<script setup lang="ts">
+import DropdownItem from './type/DropdownItem.d';
+interface Props {
+  placeholder: string;
+  items: DropdownItem[];
+}
 
-const emit = defineEmits(['change']);
+const props = defineProps<Props>();
+
+const emit = defineEmits<{
+  (e: 'change', item: DropdownItem): void;
+}>();
 
 const refDropdownContent = ref(null);
 
-const onChange = (item) => {
+const onChange = (item: DropdownItem) => {
   refDropdownContent.value.blur();
   emit('change', item);
 };

@@ -14,60 +14,18 @@ div(class="mx-4 lg:mx-0" ref="refCatalog" id="refCatalog")
     Teleport(to="#teleport-popupform")
       CatalogLoader(v-if="pending")
 </template>
-<script setup>
+<script setup lang="ts">
+import { FilterState, FilterSettingItem } from '~/types/Filter';
+
 import sortDefault from '~/data/catalog/sorting.json';
+import filters from '~/data/catalog/filters.json';
 
 const refCatalog = ref(null);
 const route = useRoute();
 const runtimeConfig = useRuntimeConfig();
 
-const filter = reactive({
-  settings: [
-    {
-      key: 'dia_carat',
-      name: 'Вес',
-      filter: {
-        type: 'range_array',
-        items: [
-          { min: 0.01, max: 0.5 },
-          { min: 0.51, max: 0.9 },
-          { min: 0.91, max: 4.0 },
-        ],
-      },
-    },
-    {
-      key: 'dia_edges',
-      name: 'Грани',
-      filter: {
-        type: 'array',
-        items: [56, 57, 65],
-      },
-    },
-    {
-      key: 'dia_color',
-      name: 'Цвет',
-      filter: {
-        type: 'range_array',
-        items: [
-          { min: 1, max: 3 },
-          { min: 4, max: 6 },
-          { min: 7, max: 9 },
-        ],
-      },
-    },
-    {
-      key: 'dia_clarity',
-      name: 'Чистота',
-      filter: {
-        type: 'range_array',
-        items: [
-          { min: 1, max: 2 },
-          { min: 3, max: 4 },
-          { min: 5, max: 9 },
-        ],
-      },
-    },
-  ],
+const filter = reactive<FilterState>({
+  settings: filters as FilterSettingItem[],
   selValues: [], // {key, val}
 });
 
@@ -95,13 +53,12 @@ const pIndex = computed(() => {
 });
 
 const url = () => {
-  const urlParams = {
-    populate: '*',
-    'pagination[page]': pIndex.value + 1,
-  };
+  const urlParams = new URLSearchParams();
+  urlParams.append('populate', '*');
+  urlParams.append('pagination[page]', `${pIndex.value + 1}`);
 
   if (sort.key) {
-    urlParams['sort'] = `${sort.key}:${sort.order}`;
+    urlParams.append('sort', `${sort.key}:${sort.order}`);
   }
 
   return (

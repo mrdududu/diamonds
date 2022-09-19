@@ -4,12 +4,13 @@ div(class="flex items-center")
   div(v-for="filterItem in props.filter.settings" class="flex items-center ml-6")
     CatalogFilterDropDown(:filterItem="filterItem" :selectedVal="getSelectedVal(filterItem.key)" @change="(val) => {onChangeFilterItem(filterItem, val)}")
 </template>
-<script setup>
+<script setup lang="ts">
+import { FilterState } from '~/types/Filter.d';
+
 const refDropdownContent = ref(null);
 const defItem = { key: null, text: 'По умолчанию' };
-const props = defineProps({
-  filter: Object,
-});
+
+const props = defineProps<{ filter: FilterState }>();
 
 const emit = defineEmits(['change']);
 
@@ -21,22 +22,22 @@ const emit = defineEmits(['change']);
 //         { min: 5, max: 9 },
 //       ],
 //     }
-const filterToDropDownItems = (filter) => {
-  switch (filter.type) {
-    case 'range_array':
-      return filter.items.map((item) => ({
-        key: JSON.stringify(item),
-        text: `от ${item.min} до ${item.max}`,
-        val: item,
-      }));
-    case 'array':
-      return filter.items.map((item) => ({
-        key: item,
-        text: `${item}`,
-        val: item,
-      }));
-  }
-};
+// const filterToDropDownItems = (filter: Filter) => {
+//   switch (filter.type) {
+//     case 'range_array':
+//       return filter.items.map((item) => ({
+//         key: JSON.stringify(item),
+//         text: `от ${item.min} до ${item.max}`,
+//         val: item,
+//       }));
+//     case 'array':
+//       return filter.items.map((item) => ({
+//         key: item,
+//         text: `${item}`,
+//         val: item,
+//       }));
+//   }
+// };
 
 const getSelectedVal = (filterItemKey) => {
   console.log('getSelectedVal', { filterItemKey });
