@@ -9,7 +9,7 @@ div(class="dropdown")
 interface DropdownItem {
   key: string | number;
   text: string | number;
-  val: any;
+  val?: any;
 }
 
 interface Props {
