@@ -2,7 +2,7 @@
 div(class="mx-4 lg:mx-0" ref="refCatalog" id="refCatalog")
   div.mb-8
     h2 Каталог
-  div(class="flex justify-between")
+  div(class="flex justify-between flex-wrap")
     CatalogFilter(:filter="filter" @change="filterChange")
     CatalogSort(:items="sort.items" :order="sort.order" :selectedKey="sort.key" @change="sortChange")
   UikitTransitionScale(direction="left")

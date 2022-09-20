@@ -1,7 +1,7 @@
 <template lang="pug">
 div(class="dropdown")
-  label(tabindex="0" class="btn m-1") {{props.placeholder}}
-  ul(tabindex="0" ref="refDropdownContent" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52")
+  label(tabindex="0" class="btn m-1 drop-shadow") {{props.placeholder}}
+  ul(tabindex="0" ref="refDropdownContent" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 drop-shadow")
     li(v-for="item in props.items" :key="item.key")
       a(@click.stop="onChange(item)") {{item.text}}
 </template>

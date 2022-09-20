@@ -1,8 +1,9 @@
 <template lang="pug">
-div(class="flex items-center")
-  div Фильтровать:
-  div(v-for="filterItem in props.filter.settings" class="flex items-center ml-6")
-    CatalogFilterDropDown(:filterItem="filterItem" :selectedVal="getSelectedVal(filterItem.key)" @change="onChangeFilterDropDown")
+div(class="flex mb-4 md:mb-0")
+  div(class="mt-4") Фильтровать:
+  div(class="flex items-center flex-wrap")
+    div(v-for="filterItem in props.filter.settings" class="flex items-center mx-2")
+      CatalogFilterDropDown(:filterItem="filterItem" :selectedVal="getSelectedVal(filterItem.key)" @change="onChangeFilterDropDown")
 </template>
 <script setup>
 const props = defineProps({ filter: Object });
