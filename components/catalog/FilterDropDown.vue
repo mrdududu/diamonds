@@ -4,26 +4,10 @@ UikitTfDropDown(:placeholder="placeholder" :items="displayedItems" @change="onCh
 <script setup>
 const props = defineProps({
   filterItem: Object,
-  selectedVal: Object,
+  selectedVal: [Object, Number, String],
 });
 
 const emit = defineEmits(['change']);
-
-// const label = computed(() => {
-//   return props.selectedVal
-//     ? `${props.selectedVal.val.text}`
-//     : props.placeholder;
-// });
-
-// const items = computed(() => {
-//   if (props.selectedVal) {
-//     return [
-//       { text: props.placeholder, val: null },
-//       ...props.items.filter((item) => item.val !== props.selectedVal),
-//     ];
-//   }
-//   return [...props.items];
-// });
 
 const filterToDropDownItems = (filter) => {
   switch (filter.type) {
