@@ -56,6 +56,30 @@ const pIndex = computed(() => {
   return page - 1;
 });
 
+const getFilterType = (key) => {
+  const setting = filter.settings.find((set) => set.key === key);
+  if (!setting) return undefined;
+
+  return setting.filter.type;
+};
+
+const mapFilterToApiParams = (urlParams) => {
+  for (const { key, val } of filter.selValues) {
+    const type = getFilterType(key);
+    console.log('mapFilterToApiParams', { key, val, type });
+
+    switch (type) {
+      case 'range_array':
+        urlParams.append(`filters[${key}][$gte]`, val.min);
+        urlParams.append(`filters[${key}][$lte]`, val.max);
+        break;
+      case 'array':
+        urlParams.append(`filters[${key}][$eq]`, val);
+        break;
+    }
+  }
+};
+
 const url = () => {
   const urlParams = new URLSearchParams();
   urlParams.append('populate', '*');
@@ -64,6 +88,8 @@ const url = () => {
   if (sort.key) {
     urlParams.append('sort', `${sort.key}:${sort.order}`);
   }
+
+  mapFilterToApiParams(urlParams);
 
   return (
     runtimeConfig.public.apiHost +

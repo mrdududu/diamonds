@@ -5,37 +5,9 @@ div(class="flex items-center")
     CatalogFilterDropDown(:filterItem="filterItem" :selectedVal="getSelectedVal(filterItem.key)" @change="onChangeFilterDropDown")
 </template>
 <script setup>
-const refDropdownContent = ref(null);
-const defItem = { key: null, text: 'По умолчанию' };
-
 const props = defineProps({ filter: Object });
 
 const emit = defineEmits(['change']);
-
-// filter: {
-//       type: 'range_array',
-//       items: [
-//         { min: 1, max: 2 },
-//         { min: 3, max: 4 },
-//         { min: 5, max: 9 },
-//       ],
-//     }
-// const filterToDropDownItems = (filter: Filter) => {
-//   switch (filter.type) {
-//     case 'range_array':
-//       return filter.items.map((item) => ({
-//         key: JSON.stringify(item),
-//         text: `от ${item.min} до ${item.max}`,
-//         val: item,
-//       }));
-//     case 'array':
-//       return filter.items.map((item) => ({
-//         key: item,
-//         text: `${item}`,
-//         val: item,
-//       }));
-//   }
-// };
 
 const getSelectedVal = (filterItemKey) => {
   const selValue = props.filter.selValues.find(
