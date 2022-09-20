@@ -57,13 +57,12 @@ const pIndex = computed(() => {
 });
 
 const url = () => {
-  const urlParams = {
-    populate: '*',
-    'pagination[page]': pIndex.value + 1,
-  };
+  const urlParams = new URLSearchParams();
+  urlParams.append('populate', '*');
+  urlParams.append('pagination[page]', `${pIndex.value + 1}`);
 
   if (sort.key) {
-    urlParams['sort'] = `${sort.key}:${sort.order}`;
+    urlParams.append('sort', `${sort.key}:${sort.order}`);
   }
 
   return (
