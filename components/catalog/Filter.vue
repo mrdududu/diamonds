@@ -2,15 +2,13 @@
 div(class="flex items-center")
   div Фильтровать:
   div(v-for="filterItem in props.filter.settings" class="flex items-center ml-6")
-    CatalogFilterDropDown(:filterItem="filterItem" :selectedVal="getSelectedVal(filterItem.key)" @change="(val) => {onChangeFilterItem(filterItem, val)}")
+    CatalogFilterDropDown(:filterItem="filterItem" :selectedVal="getSelectedVal(filterItem.key)" @change="onChangeFilterDropDown")
 </template>
-<script setup lang="ts">
-import { FilterState } from '~/types/Filter.d';
-
+<script setup>
 const refDropdownContent = ref(null);
 const defItem = { key: null, text: 'По умолчанию' };
 
-const props = defineProps<{ filter: FilterState }>();
+const props = defineProps({ filter: Object });
 
 const emit = defineEmits(['change']);
 
@@ -40,12 +38,15 @@ const emit = defineEmits(['change']);
 // };
 
 const getSelectedVal = (filterItemKey) => {
-  console.log('getSelectedVal', { filterItemKey });
-  return props.filter.selValues.find((item) => item.key === filterItemKey);
+  const selValue = props.filter.selValues.find(
+    (item) => item.key === filterItemKey
+  );
+  // console.log('Filter getSelectedVal', { filterItemKey, selValue });
+  return selValue ? selValue.val : selValue;
 };
 
-const onChangeFilterItem = (filterItem, val) => {
-  // console.log('onChangeFilterItem', { filterItem, val });
-  emit('change', { key: filterItem.key, val });
+const onChangeFilterDropDown = (dropDownVal) => {
+  console.log('Filter.vue onChangeFilterItem', dropDownVal);
+  emit('change', dropDownVal);
 };
 </script>

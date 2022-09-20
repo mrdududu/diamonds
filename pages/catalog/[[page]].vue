@@ -14,9 +14,7 @@ div(class="mx-4 lg:mx-0" ref="refCatalog" id="refCatalog")
     Teleport(to="#teleport-popupform")
       CatalogLoader(v-if="pending")
 </template>
-<script setup lang="ts">
-import { FilterState, FilterSettingItem } from '~/types/Filter';
-
+<script setup>
 import sortDefault from '~/data/catalog/sorting.json';
 import filters from '~/data/catalog/filters.json';
 
@@ -24,17 +22,23 @@ const refCatalog = ref(null);
 const route = useRoute();
 const runtimeConfig = useRuntimeConfig();
 
-const filter = reactive<FilterState>({
-  settings: filters as FilterSettingItem[],
+const filter = reactive({
+  settings: filters,
   selValues: [], // {key, val}
 });
 
-const filterChange = ({ key, val }) => {
-  console.log('filterChange', { key, val });
-  filter.selValues = [
-    ...filter.selValues.filter((item) => item.key != key),
-    { key, val },
-  ];
+const filterChange = ({ filterKey, filterSelectedItem }) => {
+  console.log('[[page]].vue filterChange', { filterKey, filterSelectedItem });
+  if (filterSelectedItem && filterSelectedItem.val) {
+    filter.selValues = [
+      ...filter.selValues.filter((item) => item.key != filterKey),
+      { key: filterKey, val: filterSelectedItem.val },
+    ];
+  } else {
+    filter.selValues = [
+      ...filter.selValues.filter((item) => item.key != filterKey),
+    ];
+  }
 };
 
 const sort = reactive(sortDefault);
@@ -53,12 +57,13 @@ const pIndex = computed(() => {
 });
 
 const url = () => {
-  const urlParams = new URLSearchParams();
-  urlParams.append('populate', '*');
-  urlParams.append('pagination[page]', `${pIndex.value + 1}`);
+  const urlParams = {
+    populate: '*',
+    'pagination[page]': pIndex.value + 1,
+  };
 
   if (sort.key) {
-    urlParams.append('sort', `${sort.key}:${sort.order}`);
+    urlParams['sort'] = `${sort.key}:${sort.order}`;
   }
 
   return (

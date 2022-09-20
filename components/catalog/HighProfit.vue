@@ -6,5 +6,5 @@ div(class="flex items-center")
     div(class="text-xs leading-none") {{text}}
 </template>
 <script setup lang="ts">
-const props = defineProps<{ percent: number; text: string }>();
+const props = defineProps<{ percent: number | string; text: string }>();
 </script>

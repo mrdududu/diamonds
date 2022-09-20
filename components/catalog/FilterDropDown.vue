@@ -1,20 +1,13 @@
 <template lang="pug">
-UikitTfDropDown(:placeholder="placeholder" :items="items" @change="onChange")
+UikitTfDropDown(:placeholder="placeholder" :items="displayedItems" @change="onChange")
 </template>
-<script setup lang="ts">
-import { Filter, FilterSettingItem, SelectedValue } from '~/types/Filter.d';
-import DropdownItem from '~/components/uikit/type/DropdownItem.d';
+<script setup>
+const props = defineProps({
+  filterItem: Object,
+  selectedVal: Object,
+});
 
-interface Props {
-  filterItem: FilterSettingItem;
-  selectedVal: SelectedValue;
-}
-
-const props = defineProps<Props>();
-
-const emit = defineEmits<{
-  (e: 'change', filterItem: FilterSettingItem, item: DropdownItem): void;
-}>();
+const emit = defineEmits(['change']);
 
 // const label = computed(() => {
 //   return props.selectedVal
@@ -32,7 +25,7 @@ const emit = defineEmits<{
 //   return [...props.items];
 // });
 
-const filterToDropDownItems = (filter: Filter): DropdownItem[] => {
+const filterToDropDownItems = (filter) => {
   switch (filter.type) {
     case 'range_array':
       return filter.items.map((item) => ({
@@ -49,11 +42,42 @@ const filterToDropDownItems = (filter: Filter): DropdownItem[] => {
   }
 };
 
-const placeholder = computed(() => props.filterItem.name);
+const placeholder = computed(() => {
+  if (selectedItem.value)
+    return `${props.filterItem.name}: ${selectedItem.value.text}`;
+
+  return props.filterItem.name;
+});
 
 const items = computed(() => filterToDropDownItems(props.filterItem.filter));
 
-const onChange = (item: DropdownItem) => {
-  emit('change', props.filterItem, item);
+const displayedItems = computed(() => {
+  if (!selectedItem.value) return items.value;
+
+  const clearItem = {
+    key: undefined,
+    text: `Очистить`,
+    val: undefined,
+  };
+
+  return [
+    ...items.value.filter((item) => item.val !== props.selectedVal),
+    clearItem,
+  ];
+});
+
+const selectedItem = computed(() => {
+  return items.value.find(
+    (item) => item.val === props.selectedVal
+    // (item) => JSON.stringify(item.val) === JSON.stringify(props.selectedVal)
+  );
+});
+
+const onChange = (item) => {
+  console.log('FilterDropDown.vue onChange', {
+    filterKey: props.filterItem.key,
+    filterSelectedItem: item,
+  });
+  emit('change', { filterKey: props.filterItem.key, filterSelectedItem: item });
 };
 </script>
