@@ -30,5 +30,18 @@ export default defineNuxtConfig({
     },
   },
   css: ['~/assets/css/tailwind.css'],
-  modules: ['@vueuse/nuxt'],
+  modules: [
+    '@vueuse/nuxt',
+    [
+      '@nuxtjs/yandex-metrika',
+      {
+        id: '90508879',
+        webvisor: true,
+        clickmap: true,
+        useCDN: false,
+        trackLinks: true,
+        accurateTrackBounce: true,
+      },
+    ],
+  ],
 });
