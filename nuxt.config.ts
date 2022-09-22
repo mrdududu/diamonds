@@ -27,21 +27,9 @@ export default defineNuxtConfig({
   app: {
     head: {
       link: [{ rel: 'icon', type: 'image/svg', href: '/favicon.svg' }],
+      script: [{ lang: 'text/javascript', src: '/js/ym.js' }],
     },
   },
   css: ['~/assets/css/tailwind.css'],
-  modules: [
-    '@vueuse/nuxt',
-    [
-      '@nuxtjs/yandex-metrika',
-      {
-        id: '90508879',
-        webvisor: true,
-        clickmap: true,
-        useCDN: false,
-        trackLinks: true,
-        accurateTrackBounce: true,
-      },
-    ],
-  ],
+  modules: ['@vueuse/nuxt'],
 });
