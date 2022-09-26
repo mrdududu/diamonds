@@ -15,8 +15,6 @@ div(class="mx-4 lg:mx-0" ref="refCatalog" id="refCatalog")
       CatalogLoader(v-if="pending")
 </template>
 <script setup>
-import sortDefault from '~/data/catalog/sorting.json';
-
 const refCatalog = ref(null);
 const route = useRoute();
 const runtimeConfig = useRuntimeConfig();
@@ -44,7 +42,7 @@ const filterChange = ({ filterKey, filterSelectedItem }) => {
   }
 };
 
-const sort = reactive(sortDefault);
+const sort = reactive(filtersData.value.data.attributes.dia_sort);
 
 const sortChange = ({ key, order }) => {
   sort.key = key;

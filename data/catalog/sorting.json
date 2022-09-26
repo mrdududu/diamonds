@@ -1,9 +1,0 @@
-{
-  "items": [
-    { "key": "dia_price_tink", "text": "По цене" },
-    { "key": "dia_carat", "text": "По весу" },
-    { "key": "dia_clarity", "text": "По чистоте" }
-  ],
-  "order": "desc",
-  "key": null
-}
