@@ -40,13 +40,13 @@ const displayedItems = computed(() => {
 
   const clearItem = {
     key: undefined,
-    text: `Очистить`,
+    text: `Все`,
     val: undefined,
   };
 
   return [
-    ...items.value.filter((item) => item.val !== props.selectedVal),
     clearItem,
+    ...items.value.filter((item) => item.val !== props.selectedVal),
   ];
 });
 
