@@ -7,7 +7,7 @@ div
   div(class="p-3 text-sm")
     div Бриллиант
     div.text-base.py-2 огранка {{item.dia_shape}}
-    div Вес: {{item.dia_carat}} карата
+    div Вес, карат: {{item.dia_carat}}
     div Граней: {{item.dia_edges}}
     div Цвет: {{item.dia_color}}
     div Чистота: {{item.dia_clarity}}
