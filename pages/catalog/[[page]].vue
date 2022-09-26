@@ -16,7 +16,6 @@ div(class="mx-4 lg:mx-0" ref="refCatalog" id="refCatalog")
 </template>
 <script setup>
 import sortDefault from '~/data/catalog/sorting.json';
-import filters from '~/data/catalog/filters.json';
 
 const refCatalog = ref(null);
 const route = useRoute();
