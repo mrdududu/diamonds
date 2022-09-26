@@ -22,8 +22,12 @@ const refCatalog = ref(null);
 const route = useRoute();
 const runtimeConfig = useRuntimeConfig();
 
+const { data: filtersData } = await useFetch(
+  `${runtimeConfig.public.apiHost}/api/dia-filter`
+);
+
 const filter = reactive({
-  settings: filters,
+  settings: filtersData.value.data.attributes.dia_filters, //filters,
   selValues: [], // {key, val}
 });
 
