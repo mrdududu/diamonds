@@ -14,6 +14,6 @@ div
     div Тип огранки: {{item.dia_cut_type}}
     div Цена: {{item.dia_price_tink}} руб
 </template>
-<script setup lang="ts">
-const props = defineProps<{ item: any }>();
+<script setup>
+const props = defineProps({ item: Object });
 </script>
