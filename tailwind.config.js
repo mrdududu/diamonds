@@ -29,6 +29,7 @@ module.exports = {
         'tf-gray-hover': '#BCBCBC',
         'tf-gray-push': '#969696',
         'tf-gray-dark': '#282828',
+        'tf-pink': '#EE7979',
       },
     },
   },
