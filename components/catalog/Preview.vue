@@ -13,7 +13,7 @@ div(class="relative preview rounded-tl-xl rounded-tr-xl" :class="{'rounded-br-xl
   CatalogDiamondItem(:item="item")
   UikitTransitionSlide
     div(v-if="state.mouseover" class="absolute rounded-br-xl rounded-bl-xl px-6 pb-5 left-0 right-0 overflow-hidden")
-      UikitTfButtonAccent Оставить заявку
+      UikitTfButtonAccent {{item.dia_sold ? 'Купить аналогичный':'Оставить заявку'}}
 </template>
 <script setup>
 const props = defineProps({
