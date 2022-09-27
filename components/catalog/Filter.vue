@@ -2,7 +2,7 @@
 div(class="flex mb-4 md:mb-0")
   div(class="mt-4") Фильтровать:
   div(class="flex items-center flex-wrap")
-    div(v-for="filterItem in props.filter.settings" class="flex items-center mx-2")
+    div(v-for="filterItem in props.filter.settings" class="mx-2")
       CatalogFilterDropDown(:filterItem="filterItem" :selectedVal="getSelectedVal(filterItem.key)" @change="onChangeFilterDropDown")
 </template>
 <script setup>
